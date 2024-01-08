@@ -69,6 +69,19 @@
     height: 50px; /* Możesz dostosować wysokość według potrzeb */
     padding: 20px;
   }
+
+  .const-k,
+  .factor-w,
+  .container-result {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .calculations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Punkty przerwania od 480px do 1199px */
