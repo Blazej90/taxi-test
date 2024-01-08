@@ -42,13 +42,14 @@
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 15px;
+    /* padding: 10px 15px; */
     margin: 5px;
     text-decoration: none;
     cursor: pointer;
     border-radius: 5px;
     display: flex;
-    align-items: center; /* Dodaje centrowanie ikony i tekstu wewnątrz przycisku */
+    align-items: center;
+    justify-content: center;
   }
 
   .container-home-page button svg,
@@ -58,6 +59,15 @@
 
   .container-definitions li {
     margin: 10px 0; /* Opcjonalne: dodaj margines dla odstępu między elementami listy */
+  }
+
+  #btn-k,
+  #btn-w,
+  #btn-error,
+  #btn-law {
+    width: 150px; /* Możesz dostosować szerokość według potrzeb */
+    height: 50px; /* Możesz dostosować wysokość według potrzeb */
+    padding: 20px;
   }
 }
 
