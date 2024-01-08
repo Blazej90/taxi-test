@@ -1,0 +1,16 @@
+.title {
+  padding-right: 20px;
+}
+
+.container-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .container-definitions {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
+  padding-bottom: 15px;
+} */
