@@ -65,8 +65,8 @@
   #btn-w,
   #btn-error,
   #btn-law {
-    width: 150px; /* Możesz dostosować szerokość według potrzeb */
-    height: 50px; /* Możesz dostosować wysokość według potrzeb */
+    width: 140px; /* Możesz dostosować szerokość według potrzeb */
+    height: 40px; /* Możesz dostosować wysokość według potrzeb */
     padding: 20px;
   }
 
@@ -77,10 +77,33 @@
     align-items: center;
   }
 
+  .btn-container {
+    padding-top: 15px;
+  }
+
+  .btn-container li {
+    display: flex;
+    margin: 20px 0;
+  }
+
+  #btn-calculate,
+  #btn-clean {
+    width: 100px;
+    height: 40px;
+  }
+
   .calculations {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  #number_1,
+  #number_2,
+  #result {
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
   }
 }
 

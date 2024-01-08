@@ -59,13 +59,15 @@
           <input type="number" id="number_2" />
           <p>imp/km</p>
         </div>
-        <button id="btn-calculate" onclick="calculate()">Oblicz</button>
         <div class="container-result">
           <label for="result">Wynik:</label>
           <input type="text" id="result" readonly />
           <p>%</p>
         </div>
-        <button id="btn-clean" onclick="clearInputs()">Wyczyść</button>
+        <div class="btn-container">
+          <button id="btn-calculate" onclick="calculate()">Oblicz</button>
+          <button id="btn-clean" onclick="clearInputs()">Wyczyść</button>
+        </div>
       </div>
     </main>
     <script src="./index.js"></script>
