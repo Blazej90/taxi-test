@@ -32,12 +32,6 @@
 
   .container-home-page button,
   .container-definitions button {
-    /* background-color: #e7dad2;
-    border: none;
-    margin: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 999999px; */
     display: flex;
     align-items: center;
     justify-content: center;

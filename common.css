@@ -1,5 +1,5 @@
 body {
-  background-color: #f3f0df;
+  background-color: #d5d5ce;
 }
 
 li {
@@ -7,6 +7,7 @@ li {
 }
 
 a {
+  color: black;
   text-decoration: none;
 }
 
@@ -23,7 +24,7 @@ menu {
 #btn-w,
 #btn-error,
 #btn-law {
-  background-color: #e7dad2;
+  background-color: #aaa5bc;
   border: none;
   margin: 5px;
   text-decoration: none;
@@ -42,7 +43,7 @@ menu {
 
 #btn-calculate,
 #btn-clean {
-  background-color: #ab8d9d;
+  background-color: #9290b2;
   border: none;
   text-decoration: none;
   cursor: pointer;
