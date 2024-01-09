@@ -40,6 +40,8 @@ footer {
 #btn-home-page {
   display: flex;
   align-items: center;
+  height: 40px;
+  padding: 20px;
 }
 #icon-home3 {
   padding-right: 10px;
