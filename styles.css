@@ -72,10 +72,124 @@
 
 /* Punkty przerwania od 480px do 1199px */
 @media only screen and (min-width: 480px) and (max-width: 1199px) {
-  /* Twój kod CSS dla tego zakresu */
+  #btn-k,
+  #btn-w,
+  #btn-error,
+  #btn-law {
+    width: 140px;
+    height: 40px;
+    padding: 20px;
+  }
+
+  .const-k,
+  .factor-w,
+  .container-result {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-container {
+    padding-top: 15px;
+  }
+
+  .btn-container li {
+    display: flex;
+    margin: 20px 0;
+  }
+
+  #btn-calculate,
+  #btn-clean {
+    width: 100px;
+    height: 40px;
+  }
+
+  .calculations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #number_1,
+  #number_2,
+  #result {
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
+  }
+
+  .author {
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 40px;
+  }
+
+  .container-text {
+    width: 350px;
+    text-align: justify;
+    line-height: normal;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
 }
 
 /* Punkty przerwania powyżej 1200px */
 @media only screen and (min-width: 1200px) {
-  /* Twój kod CSS dla tego zakresu */
+  #btn-k,
+  #btn-w,
+  #btn-error,
+  #btn-law {
+    width: 140px;
+    height: 40px;
+    padding: 20px;
+  }
+
+  .const-k,
+  .factor-w,
+  .container-result {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-container {
+    padding-top: 15px;
+  }
+
+  .btn-container li {
+    display: flex;
+    margin: 20px 0;
+  }
+
+  #btn-calculate,
+  #btn-clean {
+    width: 100px;
+    height: 40px;
+  }
+
+  .calculations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #number_1,
+  #number_2,
+  #result {
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
+  }
+
+  .author {
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 40px;
+  }
+
+  .container-text {
+    width: 350px;
+    text-align: justify;
+    line-height: normal;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
 }
