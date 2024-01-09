@@ -10,42 +10,6 @@
 
 /* Punkty przerwania od 320px do 479px */
 @media only screen and (min-width: 320px) and (max-width: 479px) {
-  .container-home-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 10px;
-  }
-  #btn-home-page {
-    display: flex;
-    align-items: center;
-  }
-  #icon-home3 {
-    padding-right: 10px;
-  }
-
-  .container-definitions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .container-home-page button,
-  .container-definitions button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .container-home-page button svg,
-  .container-definitions button svg {
-    margin-right: 5px;
-  }
-
-  .container-definitions li {
-    margin: 10px 0;
-  }
-
   #btn-k,
   #btn-w,
   #btn-error,
@@ -95,6 +59,14 @@
     margin-top: 30px;
     padding-top: 5px;
     padding-bottom: 40px;
+  }
+
+  .container-text {
+    width: 350px;
+    text-align: justify;
+    line-height: normal;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
 }
 

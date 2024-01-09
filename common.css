@@ -20,10 +20,54 @@ menu {
   padding: 0;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 footer {
   background-color: #757ba8;
 }
 
+.container-home-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+#btn-home-page {
+  display: flex;
+  align-items: center;
+}
+#icon-home3 {
+  padding-right: 10px;
+}
+
+.container-definitions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-home-page button,
+.container-definitions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-home-page button svg,
+.container-definitions button svg {
+  margin-right: 5px;
+}
+
+.container-definitions li {
+  margin: 10px 0;
+}
+
+#btn-home-page,
 #btn-k,
 #btn-w,
 #btn-error,
@@ -38,11 +82,17 @@ footer {
   transition: background-color 0.3s, transform 0.1s;
 }
 
+#btn-home-page:active,
 #btn-k:active,
 #btn-w:active,
 #btn-error:active,
 #btn-law:active {
   transform: scale(0.95);
+}
+
+.container-btn-home-page {
+  display: flex;
+  justify-content: center;
 }
 
 #btn-calculate,

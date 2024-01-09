@@ -29,17 +29,13 @@
         </svg>
       </div>
       <menu>
-        <button id="btn-home-page">
-          <svg id="icon-home3" width="30px" height="30px">
-            <use href="./images/symbol-defs.svg#icon-home3"></use>
-          </svg>
-          <a href="index.html">Strona główna</a>
-        </button>
         <div class="container-definitions">
-          <button><a href="constant_k.html">Stała "k"</a></button>
-          <button><a href="factor_w.html">Współczynnik "w"</a></button>
-          <button><a href="error.html">Wartość błędu</a></button>
-          <button>
+          <button id="btn-k"><a href="constant_k.html">Stała "k"</a></button>
+          <button id="btn-w">
+            <a href="factor_w.html">Współczynnik "w"</a>
+          </button>
+          <button id="btn-error"><a href="error.html">Wartość błędu</a></button>
+          <button id="btn-law">
             <a
               href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20190001173"
               target="_blank"
@@ -51,12 +47,22 @@
       </menu>
     </header>
     <main>
-      <p>
-        stała taksometru "k" jest wielkością wyrażoną w impulsach na kilometr
-        drogi (imp/km), która określa rodzaj i liczbę sygnałów, które powinien
-        przyjąć taksometr, aby poprawnie wskazać długość przebytej drogi równą 1
-        km;
-      </p>
+      <div class="container-text">
+        <p>
+          stała taksometru "k" jest wielkością wyrażoną w impulsach na kilometr
+          drogi (imp/km), która określa rodzaj i liczbę sygnałów, które powinien
+          przyjąć taksometr, aby poprawnie wskazać długość przebytej drogi równą
+          1 km;
+        </p>
+      </div>
+      <div class="container-btn-home-page">
+        <button id="btn-home-page">
+          <svg id="icon-home3" width="30px" height="30px">
+            <use href="./images/symbol-defs.svg#icon-home3"></use>
+          </svg>
+          <a href="index.html">Strona główna</a>
+        </button>
+      </div>
     </main>
   </body>
 </html>
