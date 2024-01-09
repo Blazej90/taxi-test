@@ -31,6 +31,12 @@ footer {
   background-color: #757ba8;
 }
 
+#number_1,
+#number_2,
+#result {
+  font-weight: bold;
+}
+
 .container-home-page {
   display: flex;
   align-items: center;
