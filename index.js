@@ -49,3 +49,12 @@ function clearInputs() {
   resultInput.value = "";
   resultInput.style.color = ""; // Przywróć domyślny kolor
 }
+
+// Otwieranie linków social-media //
+function openGitHubLink() {
+  window.open("https://github.com/Blazej90", "_blank");
+}
+
+function openFacebookLink() {
+  window.open("https://www.facebook.com/blazejbart", "_blank");
+}

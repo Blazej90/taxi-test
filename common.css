@@ -61,7 +61,34 @@ footer {
   transform: scale(0.95);
 }
 
+.author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .author > p {
   font-style: italic;
+  font-weight: lighter;
   font-size: small;
+}
+
+#icon-github,
+#icon-facebook,
+#icon-twitter,
+#icon-instagram {
+  cursor: pointer;
+}
+
+.social-media svg:not(:last-child) {
+  margin-right: 10px;
+}
+
+.social-media svg {
+  margin-right: 5px;
+  transition: fill 0.3s;
+}
+
+.social-media svg:hover {
+  fill: white;
 }

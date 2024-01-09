@@ -90,6 +90,12 @@
     height: 40px;
     box-sizing: border-box;
   }
+
+  .author {
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 40px;
+  }
 }
 
 /* Punkty przerwania od 480px do 1199px */
