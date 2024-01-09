@@ -8,13 +8,6 @@
   align-items: center;
 }
 
-/* .container-definitions {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 15px;
-  padding-bottom: 15px;
-} */
-
 /* Punkty przerwania od 320px do 479px */
 @media only screen and (min-width: 320px) and (max-width: 479px) {
   .container-home-page {
@@ -39,14 +32,12 @@
 
   .container-home-page button,
   .container-definitions button {
-    background-color: #007bff;
-    color: #fff;
+    /* background-color: #e7dad2;
     border: none;
-    /* padding: 10px 15px; */
     margin: 5px;
     text-decoration: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 999999px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,19 +45,19 @@
 
   .container-home-page button svg,
   .container-definitions button svg {
-    margin-right: 5px; /* Dodanie odstępu między ikoną a tekstem */
+    margin-right: 5px;
   }
 
   .container-definitions li {
-    margin: 10px 0; /* Opcjonalne: dodaj margines dla odstępu między elementami listy */
+    margin: 10px 0;
   }
 
   #btn-k,
   #btn-w,
   #btn-error,
   #btn-law {
-    width: 140px; /* Możesz dostosować szerokość według potrzeb */
-    height: 40px; /* Możesz dostosować wysokość według potrzeb */
+    width: 140px;
+    height: 40px;
     padding: 20px;
   }
 

@@ -1,3 +1,7 @@
+body {
+  background-color: #f3f0df;
+}
+
 li {
   list-style-type: none;
 }
@@ -6,6 +10,48 @@ a {
   text-decoration: none;
 }
 
+p,
+label {
+  font-weight: bold;
+}
+
 menu {
   padding: 0;
+}
+
+#btn-k,
+#btn-w,
+#btn-error,
+#btn-law {
+  background-color: #e7dad2;
+  border: none;
+  margin: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 999999px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+#btn-k:active,
+#btn-w:active,
+#btn-error:active,
+#btn-law:active {
+  transform: scale(0.95);
+}
+
+#btn-calculate,
+#btn-clean {
+  background-color: #ab8d9d;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 999999px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+#btn-calculate:active,
+#btn-clean:active {
+  transform: scale(0.95);
 }
