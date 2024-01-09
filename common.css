@@ -20,6 +20,10 @@ menu {
   padding: 0;
 }
 
+footer {
+  background-color: #757ba8;
+}
+
 #btn-k,
 #btn-w,
 #btn-error,
@@ -55,4 +59,9 @@ menu {
 #btn-calculate:active,
 #btn-clean:active {
   transform: scale(0.95);
+}
+
+.author > p {
+  font-style: italic;
+  font-size: small;
 }
