@@ -41,14 +41,26 @@ function calculate(openModalAfterCalculation = false) {
   displayResult(result);
 
   // Ustaw wartości pól w oknie modalnym
-  document.getElementById("modal-const_k").value = number1.toFixed(0);
-  document.getElementById("modal-factor_w").value = number2.toFixed(0);
-  document.getElementById("modal-result").value = result;
+  document.getElementById("modal-const_k").value = `"k": ${number1.toFixed(
+    0
+  )} imp./km`;
+  document.getElementById("modal-factor_w").value = `"w": ${number2.toFixed(
+    0
+  )} imp./km`;
+  document.getElementById("modal-result").value = `${result}%`;
 
   // Zablokuj możliwość edycji pól w oknie modalnym
   document.getElementById("modal-const_k").setAttribute("readonly", true);
   document.getElementById("modal-factor_w").setAttribute("readonly", true);
   document.getElementById("modal-result").setAttribute("readonly", true);
+
+  // Ustaw kolor pola wynikowego w oknie modalnym
+  const resultInput = document.getElementById("modal-result");
+  if (Math.abs(result) > 1) {
+    resultInput.style.color = "red";
+  } else {
+    resultInput.style.color = "green";
+  }
 
   // Otwórz okno modalne tylko jeśli openModalAfterCalculation jest true
   if (openModalAfterCalculation) {
@@ -91,3 +103,12 @@ function saveModalData() {
   console.log("Zapisano dane: " + modalInputValue);
   closeModal();
 }
+
+// Funkcja do wielkich liter//
+function capitalizeInputValue(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = input.value.toUpperCase();
+}
+capitalizeInputValue("modal-numberTaximeter");
+capitalizeInputValue("modal-registrationNumber");
+capitalizeInputValue("modal-wheelsSize");

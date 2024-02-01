@@ -103,6 +103,7 @@ footer {
   justify-content: center;
 }
 
+#btn-modal-save,
 #btn-save-test-result,
 #btn-calculate,
 #btn-clean {
@@ -115,6 +116,7 @@ footer {
   transition: background-color 0.3s, transform 0.1s;
 }
 
+#btn-modal-save:active,
 #btn-save-test-result:active,
 #btn-calculate:active,
 #btn-clean:active {

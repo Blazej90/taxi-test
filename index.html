@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TAXI TEST 2.0</title>
+    <title>TAXI TEST ver. 2.1</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -51,17 +51,17 @@
       <div class="calculations">
         <div class="const-k">
           <label for="number_1">stała "k"</label>
-          <input type="number" id="number_1" />
+          <input type="number" id="number_1" class="input-main-spacing" />
           <p>imp/km</p>
         </div>
         <div class="factor-w">
           <label for="number_2">współczynnik "w"</label>
-          <input type="number" id="number_2" />
+          <input type="number" id="number_2" class="input-main-spacing" />
           <p>imp/km</p>
         </div>
         <div class="container-result">
           <label for="result">Wynik:</label>
-          <input type="text" id="result" readonly />
+          <input type="text" id="result" readonly class="input-main-spacing" />
           <p>%</p>
         </div>
         <div class="btn-container">
@@ -75,28 +75,54 @@
       <div id="myModal" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal()">&times;</span>
-          <h2>Okno modalne</h2>
-          <p>Tutaj możesz wprowadzić dodatkowe informacje:</p>
-          <input
-            type="text"
-            id="modal-numberTaximeter"
-            placeholder="Numer taksometru"
-          />
-          <input
-            type="text"
-            id="modal-makeOfCar"
-            placeholder="Marka samochodu"
-          />
-          <input
-            type="text"
-            id="modal-registrationNumber"
-            placeholder="Numer rejestracyjny"
-          />
-          <input type="text" id="modal-wheelsSize" placeholder="Rozmiar opon" />
-          <input type="text" id="modal-const_k" placeholder="" />
-          <input type="text" id="modal-factor_w" placeholder="" />
-          <input type="text" id="modal-result" placeholder="" />
-          <button onclick="saveModalData()">Zapisz wynik</button>
+          <div class="modal-position-inside">
+            <p>Uzupełnij pola:</p>
+            <input
+              type="text"
+              id="modal-numberTaximeter"
+              placeholder="Numer taksometru"
+              class="input-spacing input-capitalize-letters"
+            />
+            <input
+              type="text"
+              id="modal-makeOfCar"
+              placeholder="Marka samochodu"
+              class="input-spacing input-capitalize-letters"
+            />
+            <input
+              type="text"
+              id="modal-registrationNumber"
+              placeholder="Numer rejestracyjny"
+              class="input-spacing input-capitalize-letters"
+            />
+            <input
+              type="text"
+              id="modal-wheelsSize"
+              placeholder="Rozmiar opon"
+              class="input-spacing input-capitalize-letters"
+            />
+            <input
+              type="text"
+              id="modal-const_k"
+              placeholder=""
+              class="input-spacing input-locked"
+            />
+            <input
+              type="text"
+              id="modal-factor_w"
+              placeholder=""
+              class="input-spacing input-locked"
+            />
+            <input
+              type="text"
+              id="modal-result"
+              placeholder=""
+              class="input-spacing input-locked"
+            />
+            <button id="btn-modal-save" onclick="saveModalData()">
+              Zapisz pomiar
+            </button>
+          </div>
         </div>
       </div>
     </main>

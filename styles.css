@@ -10,6 +10,41 @@
 
 /* Punkty przerwania od 320px do 479px */
 @media only screen and (min-width: 320px) and (max-width: 479px) {
+  /* --- Modal window --- */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+  }
+
+  .modal-position-inside {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .input-main-spacing {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .input-spacing {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .input-capitalize-letters {
+    text-transform: uppercase;
+  }
+
+  .input-locked {
+    background-color: rgb(202, 202, 202);
+  }
+
   #btn-k,
   #btn-w,
   #btn-error,
@@ -33,6 +68,11 @@
   .btn-container li {
     display: flex;
     margin: 20px 0;
+  }
+
+  #btn-modal-save {
+    height: 40px;
+    width: 140px;
   }
 
   #btn-save-test-result,
@@ -210,13 +250,13 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+/* .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
-}
+} */
 
 .close {
   color: #aaa;
