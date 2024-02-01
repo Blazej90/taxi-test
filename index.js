@@ -1,5 +1,5 @@
-function validateInput(input) {
-  // Ogranicz wprowadzane wartości do liczb dodatnich
+// Ogranicz wprowadzane wartości do liczb dodatnich
+function handleInput(input) {
   if (input.value < 0) {
     input.value = 0;
   }
@@ -23,7 +23,7 @@ function displayResult(result) {
   }
 }
 
-function calculate() {
+function calculate(openModalAfterCalculation = false) {
   // Pobierz wartości z pól input
   const number1 = parseFloat(document.getElementById("number_1").value);
   const number2 = parseFloat(document.getElementById("number_2").value);
@@ -39,6 +39,21 @@ function calculate() {
 
   // Wywołaj funkcję do wyświetlania wyniku i alertu
   displayResult(result);
+
+  // Ustaw wartości pól w oknie modalnym
+  document.getElementById("modal-const_k").value = number1.toFixed(0);
+  document.getElementById("modal-factor_w").value = number2.toFixed(0);
+  document.getElementById("modal-result").value = result;
+
+  // Zablokuj możliwość edycji pól w oknie modalnym
+  document.getElementById("modal-const_k").setAttribute("readonly", true);
+  document.getElementById("modal-factor_w").setAttribute("readonly", true);
+  document.getElementById("modal-result").setAttribute("readonly", true);
+
+  // Otwórz okno modalne tylko jeśli openModalAfterCalculation jest true
+  if (openModalAfterCalculation) {
+    openModal();
+  }
 }
 
 // Dodana funkcja do czyszczenia inputów
@@ -57,4 +72,22 @@ function openGitHubLink() {
 
 function openFacebookLink() {
   window.open("https://www.facebook.com/blazejbart", "_blank");
+}
+
+// Modal window //
+function openModal() {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
+
+function saveModalData() {
+  const modalInputValue = document.getElementById("modalInput").value;
+  // Tutaj możesz dodać logikę obsługi danych wprowadzonych w modalu
+  console.log("Zapisano dane: " + modalInputValue);
+  closeModal();
 }

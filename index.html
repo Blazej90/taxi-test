@@ -65,8 +65,38 @@
           <p>%</p>
         </div>
         <div class="btn-container">
+          <button id="btn-save-test-result" onclick="openModal()">
+            Zapisz
+          </button>
           <button id="btn-calculate" onclick="calculate()">Oblicz</button>
           <button id="btn-clean" onclick="clearInputs()">Wyczyść</button>
+        </div>
+      </div>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Okno modalne</h2>
+          <p>Tutaj możesz wprowadzić dodatkowe informacje:</p>
+          <input
+            type="text"
+            id="modal-numberTaximeter"
+            placeholder="Numer taksometru"
+          />
+          <input
+            type="text"
+            id="modal-makeOfCar"
+            placeholder="Marka samochodu"
+          />
+          <input
+            type="text"
+            id="modal-registrationNumber"
+            placeholder="Numer rejestracyjny"
+          />
+          <input type="text" id="modal-wheelsSize" placeholder="Rozmiar opon" />
+          <input type="text" id="modal-const_k" placeholder="" />
+          <input type="text" id="modal-factor_w" placeholder="" />
+          <input type="text" id="modal-result" placeholder="" />
+          <button onclick="saveModalData()">Zapisz wynik</button>
         </div>
       </div>
     </main>

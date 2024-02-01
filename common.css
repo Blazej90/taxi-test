@@ -103,6 +103,7 @@ footer {
   justify-content: center;
 }
 
+#btn-save-test-result,
 #btn-calculate,
 #btn-clean {
   background-color: #9290b2;
@@ -114,6 +115,7 @@ footer {
   transition: background-color 0.3s, transform 0.1s;
 }
 
+#btn-save-test-result:active,
 #btn-calculate:active,
 #btn-clean:active {
   transform: scale(0.95);
