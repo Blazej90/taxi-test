@@ -111,6 +111,14 @@
   }
 }
 
+.red-result {
+  color: red;
+}
+
+.green-result {
+  color: green;
+}
+
 /* Punkty przerwania od 480px do 1199px */
 @media only screen and (min-width: 480px) and (max-width: 1199px) {
   #btn-k,

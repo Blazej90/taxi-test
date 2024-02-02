@@ -97,12 +97,6 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-// function saveModalData() {
-//   const modalInputValue = document.getElementById("modalInput").value;
-//   console.log("Zapisano dane: " + modalInputValue);
-//   closeModal();
-// }
-
 // Funkcja do wielkich liter//
 function capitalizeInputValue(inputId) {
   const input = document.getElementById(inputId);
@@ -119,6 +113,7 @@ capitalizeInputValue("modal-wheelsSize");
 
 // Funkcja do zapisu danych w localStorage i przekierowania na test_result.html
 function saveModalData() {
+  // Pobierz wartości z pól formularza modalnego
   const numberTaximeter = document.getElementById(
     "modal-numberTaximeter"
   ).value;
@@ -134,6 +129,9 @@ function saveModalData() {
   // Sprawdź, czy tablica już istnieje w localStorage
   const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
 
+  // Dodaj timestamp do wpisu
+  const currentTimestamp = new Date();
+
   // Dodaj nowy wpis do tablicy
   const newEntry = {
     numberTaximeter,
@@ -143,7 +141,10 @@ function saveModalData() {
     const_k,
     factor_w,
     result,
+    timestamp: currentTimestamp.toISOString(), // Dodaj timestamp w formie ISO
   };
+
+  // Dodaj nowy wpis do tablicy
   testResults.push(newEntry);
 
   // Zapisz zaktualizowaną tablicę do localStorage
@@ -166,27 +167,65 @@ function updateTestResultFromLocalStorage() {
     // Pobierz tablicę z localStorage
     const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
 
+    // Wyczyść aktualny widok przed dodaniem nowych wpisów
+    const testResultsContainer = document.getElementById(
+      "testResultsContainer"
+    );
+    testResultsContainer.innerHTML = "";
+
     // Iteruj przez wpisy i aktualizuj widok na stronie
     testResults.forEach((entry, index) => {
+      const resultValue = parseFloat(entry.result) || 0;
+      const currentTimestamp = new Date(entry.timestamp);
+      const formattedTimestamp = currentTimestamp.toLocaleString();
+
+      // Określ klasę dla koloru wyniku
+      const resultColorClass = resultValue > 1 ? "red-result" : "green-result";
+
       const entryContainer = document.createElement("div");
       entryContainer.innerHTML = `
-        <h2>Dane z ostatniego pomiaru:</h2>
-        <p>Numer taksometru: <span>${entry.numberTaximeter || "-"}</span></p>
-        <p>Marka samochodu: <span>${entry.makeOfCar || "-"}</span></p>
-        <p>Numer rejestracyjny: <span>${
+        <p>Data utworzenia wpisu: ${formattedTimestamp}</p>
+        <p>Numer taksometru: <span>${(
+          entry.numberTaximeter || "-"
+        ).toUpperCase()}</span></p>
+        <p>Marka samochodu: <span>${(
+          entry.makeOfCar || "-"
+        ).toUpperCase()}</span></p>
+        <p>Numer rejestracyjny: <span>${(
           entry.registrationNumber || "-"
-        }</span></p>
-        <p>Rozmiar opon: <span>${entry.wheelsSize || "-"}</span></p>
-        <p>Stała "k": <span>${entry.const_k || "-"}</span> imp./km</p>
-        <p>Współczynnik "w": <span>${entry.factor_w || "-"}</span> imp./km</p>
-        <p>Wynik: <span>${entry.result || "-"}</span></p>
+        ).toUpperCase()}</span></p>
+        <p>Rozmiar opon: <span>${(
+          entry.wheelsSize || "-"
+        ).toUpperCase()}</span></p>
+        <span><b>${entry.const_k || "-"}</b></span> 
+        <p> </p>
+        <span><b>${entry.factor_w || "-"}</b></span> 
+        <p>Wynik: <span class="${resultColorClass}">${
+        entry.result || "-"
+      }</span></p>
+        <button onclick="removeEntry(${index})">Usuń wpis</button>
         <hr>
       `;
 
-      // Dodaj nowy wpis przed wszystkimi innymi elementami na stronie
-      document.body.insertBefore(entryContainer, document.body.firstChild);
+      // Dodaj nowy wpis do sekcji wyników
+      testResultsContainer.appendChild(entryContainer);
     });
   }
+}
+
+// Funkcja do usuwania wpisu po indeksie
+function removeEntry(index) {
+  // Pobierz tablicę z localStorage
+  const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
+
+  // Usuń wpis o danym indeksie
+  testResults.splice(index, 1);
+
+  // Zapisz zaktualizowaną tablicę z powrotem do localStorage
+  localStorage.setItem("testResults", JSON.stringify(testResults));
+
+  // Odśwież widok na stronie
+  updateTestResultFromLocalStorage();
 }
 
 // Wywołaj funkcję przy załadowaniu strony lub w odpowiednim momencie
