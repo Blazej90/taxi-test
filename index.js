@@ -97,18 +97,73 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-function saveModalData() {
-  const modalInputValue = document.getElementById("modalInput").value;
-  // Tutaj możesz dodać logikę obsługi danych wprowadzonych w modalu
-  console.log("Zapisano dane: " + modalInputValue);
-  closeModal();
-}
+// function saveModalData() {
+//   const modalInputValue = document.getElementById("modalInput").value;
+//   console.log("Zapisano dane: " + modalInputValue);
+//   closeModal();
+// }
 
 // Funkcja do wielkich liter//
 function capitalizeInputValue(inputId) {
   const input = document.getElementById(inputId);
-  input.value = input.value.toUpperCase();
+
+  // Dodaj sprawdzenie, czy input nie jest nullem
+  if (input) {
+    input.value = input.value.toUpperCase();
+  }
 }
 capitalizeInputValue("modal-numberTaximeter");
 capitalizeInputValue("modal-registrationNumber");
 capitalizeInputValue("modal-wheelsSize");
+
+// Funkcja do zapisu danych w localStorage i przekierowania na test_result.html
+function saveModalData() {
+  // Pobierz wartości z pól modalnych
+  const numberTaximeter = document.getElementById(
+    "modal-numberTaximeter"
+  ).value;
+  const makeOfCar = document.getElementById("modal-makeOfCar").value;
+  const registrationNumber = document.getElementById(
+    "modal-registrationNumber"
+  ).value;
+  const wheelsSize = document.getElementById("modal-wheelsSize").value;
+  const const_k = document.getElementById("modal-const_k").value;
+  const factor_w = document.getElementById("modal-factor_w").value;
+  const result = document.getElementById("modal-result").value;
+
+  // Zapisz dane do localStorage
+  localStorage.setItem("modal-numberTaximeter", numberTaximeter);
+  localStorage.setItem("modal-makeOfCar", makeOfCar);
+  localStorage.setItem("modal-registrationNumber", registrationNumber);
+  localStorage.setItem("modal-wheelsSize", wheelsSize);
+  localStorage.setItem("modal-const_k", const_k);
+  localStorage.setItem("modal-factor_w", factor_w);
+  localStorage.setItem("modal-result", result);
+
+  // Zamknij okno modalne
+  closeModal();
+
+  // Przekieruj na stronę test_result.html po zakończeniu funkcji
+  window.location.href = "test_result.html";
+}
+
+// Funkcja do aktualizacji danych z localStorage na stronie test_result.html
+function updateTestResultFromLocalStorage() {
+  document.getElementById("numberTaximeter").innerText =
+    localStorage.getItem("modal-numberTaximeter") || "-";
+  document.getElementById("makeOfCar").innerText =
+    localStorage.getItem("modal-makeOfCar") || "-";
+  document.getElementById("registrationNumber").innerText =
+    localStorage.getItem("modal-registrationNumber") || "-";
+  document.getElementById("wheelsSize").innerText =
+    localStorage.getItem("modal-wheelsSize") || "-";
+  document.getElementById("const_k").innerText =
+    localStorage.getItem("modal-const_k") || "-";
+  document.getElementById("factor_w").innerText =
+    localStorage.getItem("modal-factor_w") || "-";
+  document.getElementById("result").innerText =
+    localStorage.getItem("modal-result") || "-";
+}
+
+// Wywołaj funkcję przy załadowaniu strony lub w odpowiednim momencie
+updateTestResultFromLocalStorage();
