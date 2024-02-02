@@ -22,7 +22,16 @@
     <link rel="stylesheet" href="common.css" />
   </head>
   <body>
-    <div>
+    <div class="container-btn-home-page">
+      <button id="btn-home-page">
+        <svg id="icon-home3" width="30px" height="30px">
+          <use href="./images/symbol-defs.svg#icon-home3"></use>
+        </svg>
+        <a href="index.html">Strona główna</a>
+      </button>
+    </div>
+    <div id="testResultsContainer"></div>
+    <!-- <div>
       <h2>Dane z ostatniego pomiaru:</h2>
       <p>Numer taksometru: <span id="numberTaximeter"></span></p>
       <p>Marka samochodu: <span id="makeOfCar"></span></p>
@@ -31,7 +40,7 @@
       <p>Stała "k": <span id="const_k"></span> imp./km</p>
       <p>Współczynnik "w": <span id="factor_w"></span> imp./km</p>
       <p>Wynik: <span id="result"></span></p>
-    </div>
+    </div> -->
     <script src="./index.js"></script>
   </body>
 </html>

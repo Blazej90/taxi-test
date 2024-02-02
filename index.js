@@ -113,12 +113,12 @@ function capitalizeInputValue(inputId) {
   }
 }
 capitalizeInputValue("modal-numberTaximeter");
+capitalizeInputValue("modal-makeOfCar");
 capitalizeInputValue("modal-registrationNumber");
 capitalizeInputValue("modal-wheelsSize");
 
 // Funkcja do zapisu danych w localStorage i przekierowania na test_result.html
 function saveModalData() {
-  // Pobierz wartości z pól modalnych
   const numberTaximeter = document.getElementById(
     "modal-numberTaximeter"
   ).value;
@@ -131,38 +131,62 @@ function saveModalData() {
   const factor_w = document.getElementById("modal-factor_w").value;
   const result = document.getElementById("modal-result").value;
 
-  // Zapisz dane do localStorage
-  localStorage.setItem("modal-numberTaximeter", numberTaximeter);
-  localStorage.setItem("modal-makeOfCar", makeOfCar);
-  localStorage.setItem("modal-registrationNumber", registrationNumber);
-  localStorage.setItem("modal-wheelsSize", wheelsSize);
-  localStorage.setItem("modal-const_k", const_k);
-  localStorage.setItem("modal-factor_w", factor_w);
-  localStorage.setItem("modal-result", result);
+  // Sprawdź, czy tablica już istnieje w localStorage
+  const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
+
+  // Dodaj nowy wpis do tablicy
+  const newEntry = {
+    numberTaximeter,
+    makeOfCar,
+    registrationNumber,
+    wheelsSize,
+    const_k,
+    factor_w,
+    result,
+  };
+  testResults.push(newEntry);
+
+  // Zapisz zaktualizowaną tablicę do localStorage
+  localStorage.setItem("testResults", JSON.stringify(testResults));
+
+  // Przekieruj na stronę test_result.html
+  window.location.href = "test_result.html";
 
   // Zamknij okno modalne
   closeModal();
-
-  // Przekieruj na stronę test_result.html po zakończeniu funkcji
-  window.location.href = "test_result.html";
 }
 
 // Funkcja do aktualizacji danych z localStorage na stronie test_result.html
 function updateTestResultFromLocalStorage() {
-  document.getElementById("numberTaximeter").innerText =
-    localStorage.getItem("modal-numberTaximeter") || "-";
-  document.getElementById("makeOfCar").innerText =
-    localStorage.getItem("modal-makeOfCar") || "-";
-  document.getElementById("registrationNumber").innerText =
-    localStorage.getItem("modal-registrationNumber") || "-";
-  document.getElementById("wheelsSize").innerText =
-    localStorage.getItem("modal-wheelsSize") || "-";
-  document.getElementById("const_k").innerText =
-    localStorage.getItem("modal-const_k") || "-";
-  document.getElementById("factor_w").innerText =
-    localStorage.getItem("modal-factor_w") || "-";
-  document.getElementById("result").innerText =
-    localStorage.getItem("modal-result") || "-";
+  // Sprawdź, czy bieżąca strona to test_result.html
+  const isTestResultPage =
+    window.location.pathname.includes("test_result.html");
+
+  if (isTestResultPage) {
+    // Pobierz tablicę z localStorage
+    const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
+
+    // Iteruj przez wpisy i aktualizuj widok na stronie
+    testResults.forEach((entry, index) => {
+      const entryContainer = document.createElement("div");
+      entryContainer.innerHTML = `
+        <h2>Dane z ostatniego pomiaru:</h2>
+        <p>Numer taksometru: <span>${entry.numberTaximeter || "-"}</span></p>
+        <p>Marka samochodu: <span>${entry.makeOfCar || "-"}</span></p>
+        <p>Numer rejestracyjny: <span>${
+          entry.registrationNumber || "-"
+        }</span></p>
+        <p>Rozmiar opon: <span>${entry.wheelsSize || "-"}</span></p>
+        <p>Stała "k": <span>${entry.const_k || "-"}</span> imp./km</p>
+        <p>Współczynnik "w": <span>${entry.factor_w || "-"}</span> imp./km</p>
+        <p>Wynik: <span>${entry.result || "-"}</span></p>
+        <hr>
+      `;
+
+      // Dodaj nowy wpis przed wszystkimi innymi elementami na stronie
+      document.body.insertBefore(entryContainer, document.body.firstChild);
+    });
+  }
 }
 
 // Wywołaj funkcję przy załadowaniu strony lub w odpowiednim momencie
