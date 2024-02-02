@@ -144,8 +144,8 @@ function saveModalData() {
     timestamp: currentTimestamp.toISOString(), // Dodaj timestamp w formie ISO
   };
 
-  // Dodaj nowy wpis do tablicy
-  testResults.push(newEntry);
+  // Dodaj nowy wpis na początek tablicy
+  testResults.unshift(newEntry);
 
   // Zapisz zaktualizowaną tablicę do localStorage
   localStorage.setItem("testResults", JSON.stringify(testResults));
@@ -184,7 +184,7 @@ function updateTestResultFromLocalStorage() {
 
       const entryContainer = document.createElement("div");
       entryContainer.innerHTML = `
-        <p>Data utworzenia wpisu: ${formattedTimestamp}</p>
+        <p>Data: ${formattedTimestamp}</p>
         <p>Numer taksometru: <span>${(
           entry.numberTaximeter || "-"
         ).toUpperCase()}</span></p>
