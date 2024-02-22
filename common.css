@@ -98,11 +98,20 @@ footer {
   transform: scale(0.95);
 }
 
+#btn-home-page {
+  margin: 15px 0 5px 0;
+}
+
+.input-search {
+  margin: 15px 0 15px 0;
+}
+
 .container-btn-home-page {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-top: 0;
 }
 
 #btn-modal-save,
@@ -155,4 +164,13 @@ footer {
 
 .social-media svg:hover {
   fill: white;
+}
+
+.sticky-search-container {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: #9c9c99;
+  /* Dodajemy białe tło dla kontrastu */
+  z-index: 1000; /* Ustawiamy wysoki indeks warstwy, aby był zawsze na wierzchu */
 }

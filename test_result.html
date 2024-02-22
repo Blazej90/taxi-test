@@ -22,19 +22,22 @@
     <link rel="stylesheet" href="common.css" />
   </head>
   <body>
-    <div class="container-btn-home-page">
-      <button id="btn-home-page">
-        <svg id="icon-home3" width="30px" height="30px">
-          <use href="./images/symbol-defs.svg#icon-home3"></use>
-        </svg>
-        <a href="index.html">Strona główna</a>
-      </button>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Szukaj..."
-        oninput="searchEntries()"
-      />
+    <div class="sticky-search-container">
+      <div class="container-btn-home-page">
+        <button id="btn-home-page">
+          <svg id="icon-home3" width="30px" height="30px">
+            <use href="./images/symbol-defs.svg#icon-home3"></use>
+          </svg>
+          <a href="index.html">Strona główna</a>
+        </button>
+        <input
+          class="input-search"
+          type="text"
+          id="searchInput"
+          placeholder="Szukaj..."
+          oninput="searchEntries()"
+        />
+      </div>
     </div>
     <div id="testResultsContainer"></div>
     <script src="./index.js"></script>
