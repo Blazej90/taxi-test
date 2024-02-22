@@ -211,7 +211,7 @@ function updateTestResultFromLocalStorage() {
     <p>Wynik: <span class="${resultColorClass}">${
         entry.result || "-"
       }</span></p>
-    <button onclick="removeEntry(${index})">Usuń wpis</button>
+    <button id="btn-remove-entry" onclick="removeEntry(${index})">Usuń zapis</button>
     <hr>
 `;
 

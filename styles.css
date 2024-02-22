@@ -63,21 +63,17 @@
 
   .btn-container {
     padding-top: 15px;
-  }
-
-  .btn-container li {
     display: flex;
-    margin: 20px 0;
-  }
-
-  #btn-modal-save {
-    height: 40px;
-    width: 140px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
 
   #btn-save-test-result,
   #btn-calculate,
-  #btn-clean {
+  #btn-clean,
+  #btn-measurement,
+  #btn-remove-entry {
     width: 100px;
     height: 40px;
   }
@@ -154,16 +150,16 @@
 
   .btn-container {
     padding-top: 15px;
-  }
-
-  .btn-container li {
     display: flex;
-    margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
 
   #btn-save-test-result,
   #btn-calculate,
-  #btn-clean {
+  #btn-clean,
+  #btn-measurement {
     width: 100px;
     height: 40px;
   }
@@ -217,16 +213,16 @@
 
   .btn-container {
     padding-top: 15px;
-  }
-
-  .btn-container li {
     display: flex;
-    margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
 
   #btn-save-test-result,
   #btn-calculate,
-  #btn-clean {
+  #btn-clean,
+  #btn-measurement {
     width: 100px;
     height: 40px;
   }

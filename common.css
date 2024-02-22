@@ -117,7 +117,9 @@ footer {
 #btn-modal-save,
 #btn-save-test-result,
 #btn-calculate,
-#btn-clean {
+#btn-clean,
+#btn-measurement,
+#btn-remove-entry {
   background-color: #9290b2;
   border: none;
   text-decoration: none;
@@ -130,7 +132,9 @@ footer {
 #btn-modal-save:active,
 #btn-save-test-result:active,
 #btn-calculate:active,
-#btn-clean:active {
+#btn-clean:active,
+#btn-measurement:active,
+#btn-remove-entry {
   transform: scale(0.95);
 }
 
