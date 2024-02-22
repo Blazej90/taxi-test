@@ -183,29 +183,40 @@ function updateTestResultFromLocalStorage() {
       const resultColorClass = resultValue > 1 ? "red-result" : "green-result";
 
       const entryContainer = document.createElement("div");
+
+      // Ustaw klasę dla wpisu
+      entryContainer.classList.add("entry");
+
+      // Ustaw atrybuty data- dla wpisu
+      entryContainer.dataset.numberTaximeter = entry.numberTaximeter;
+      entryContainer.dataset.makeOfCar = entry.makeOfCar;
+      entryContainer.dataset.registrationNumber = entry.registrationNumber;
+
+      // Ustaw zawartość wpisu
       entryContainer.innerHTML = `
-        <p>Data: ${formattedTimestamp}</p>
-        <p>Numer taksometru: <span>${(
-          entry.numberTaximeter || "-"
-        ).toUpperCase()}</span></p>
-        <p>Marka samochodu: <span>${(
-          entry.makeOfCar || "-"
-        ).toUpperCase()}</span></p>
-        <p>Numer rejestracyjny: <span>${(
-          entry.registrationNumber || "-"
-        ).toUpperCase()}</span></p>
-        <p>Rozmiar opon: <span>${(
-          entry.wheelsSize || "-"
-        ).toUpperCase()}</span></p>
-        <span><b>${entry.const_k || "-"}</b></span> 
-        <p> </p>
-        <span><b>${entry.factor_w || "-"}</b></span> 
-        <p>Wynik: <span class="${resultColorClass}">${
+    <p>Data: ${formattedTimestamp}</p>
+    <p>Numer taksometru: <span>${(
+      entry.numberTaximeter || "-"
+    ).toUpperCase()}</span></p>
+    <p>Marka samochodu: <span>${(
+      entry.makeOfCar || "-"
+    ).toUpperCase()}</span></p>
+    <p>Numer rejestracyjny: <span>${(
+      entry.registrationNumber || "-"
+    ).toUpperCase()}</span></p>
+    <p>Rozmiar opon: <span>${(entry.wheelsSize || "-").toUpperCase()}</span></p>
+    <span><b>${entry.const_k || "-"}</b></span> 
+    <p> </p>
+    <span><b>${entry.factor_w || "-"}</b></span> 
+    <p>Wynik: <span class="${resultColorClass}">${
         entry.result || "-"
       }</span></p>
-        <button onclick="removeEntry(${index})">Usuń wpis</button>
-        <hr>
-      `;
+    <button onclick="removeEntry(${index})">Usuń wpis</button>
+    <hr>
+`;
+
+      // Dodaj utworzony wpis do kontenera wpisów
+      testResultsContainer.appendChild(entryContainer);
 
       // Dodaj nowy wpis do sekcji wyników
       testResultsContainer.appendChild(entryContainer);
@@ -230,3 +241,36 @@ function removeEntry(index) {
 
 // Wywołaj funkcję przy załadowaniu strony lub w odpowiednim momencie
 updateTestResultFromLocalStorage();
+
+// Otwarcie strony test_result.html
+function redirectMeasurementPage() {
+  window.location.href = "test_result.html";
+}
+
+// Wyszukiwanie wyników pomiaru
+function searchEntries() {
+  // Pobierz wartość wprowadzoną przez użytkownika
+  let searchText = document.getElementById("searchInput").value.toLowerCase();
+
+  // Pobierz wszystkie wpisy
+  let entries = document.querySelectorAll(".entry");
+
+  // Przejdź przez każdy wpis i sprawdź, czy zawiera wprowadzony tekst
+  entries.forEach(function (entry) {
+    let numberTaximeter = entry.dataset.numberTaximeter.toLowerCase();
+    let makeOfCar = entry.dataset.makeOfCar.toLowerCase();
+    let registrationNumber = entry.dataset.registrationNumber.toLowerCase();
+
+    if (
+      numberTaximeter.includes(searchText) ||
+      makeOfCar.includes(searchText) ||
+      registrationNumber.includes(searchText)
+    ) {
+      // Jeśli wpis zawiera wprowadzony tekst w numerze taksometru, marce samochodu lub numerze rejestracyjnym, pokaż go
+      entry.style.display = "block";
+    } else {
+      // Jeśli wpis nie zawiera wprowadzonego tekstu w żadnym z powyższych pól, ukryj go
+      entry.style.display = "none";
+    }
+  });
+}
