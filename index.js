@@ -249,13 +249,11 @@ function redirectMeasurementPage() {
 
 // Wyszukiwanie wyników pomiaru
 function searchEntries() {
-  // Pobierz wartość wprowadzoną przez użytkownika
   let searchText = document.getElementById("searchInput").value.toLowerCase();
-
-  // Pobierz wszystkie wpisy
   let entries = document.querySelectorAll(".entry");
 
-  // Przejdź przez każdy wpis i sprawdź, czy zawiera wprowadzony tekst
+  let displayNoResultsMessage = true; // Ustawiamy flagę na true, zakładając, że nie znaleziono żadnych wyników
+
   entries.forEach(function (entry) {
     let numberTaximeter = entry.dataset.numberTaximeter.toLowerCase();
     let makeOfCar = entry.dataset.makeOfCar.toLowerCase();
@@ -266,11 +264,15 @@ function searchEntries() {
       makeOfCar.includes(searchText) ||
       registrationNumber.includes(searchText)
     ) {
-      // Jeśli wpis zawiera wprowadzony tekst w numerze taksometru, marce samochodu lub numerze rejestracyjnym, pokaż go
       entry.style.display = "block";
+      displayNoResultsMessage = false; // Znaleziono wyniki, więc ustawiamy flagę na false
     } else {
-      // Jeśli wpis nie zawiera wprowadzonego tekstu w żadnym z powyższych pól, ukryj go
       entry.style.display = "none";
     }
   });
+
+  // Wyświetl alert, jeśli nie znaleziono żadnych wyników
+  if (displayNoResultsMessage) {
+    alert("Brak wyników wyszukiwania...");
+  }
 }
