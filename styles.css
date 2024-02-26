@@ -78,6 +78,11 @@
     height: 40px;
   }
 
+  #btn-modal-save {
+    height: 40px;
+    width: 120px;
+  }
+
   .calculations {
     display: flex;
     flex-direction: column;
@@ -130,8 +135,64 @@
   font-size: large;
 }
 
-/* Punkty przerwania od 480px do 1199px */
-@media only screen and (min-width: 480px) and (max-width: 1199px) {
+/* Punkty przerwania od 480px do 767px */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  /* --- Modal window --- */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    height: 460px;
+  }
+
+  .modal-position-inside {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .input-main-spacing {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .input-spacing {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .input-capitalize-letters {
+    text-transform: uppercase;
+  }
+
+  .input-locked {
+    background-color: rgb(202, 202, 202);
+  }
+
+  #btn-modal-save {
+    height: 40px;
+    width: 120px;
+  }
+
+  #testResultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .entry {
+    padding: 0 0 10px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: inherit;
+    height: auto;
+    width: 30%;
+  }
+
   #btn-k,
   #btn-w,
   #btn-error,
@@ -159,7 +220,128 @@
   #btn-save-test-result,
   #btn-calculate,
   #btn-clean,
-  #btn-measurement {
+  #btn-measurement,
+  #btn-remove-entry {
+    width: 100px;
+    height: 40px;
+  }
+
+  .calculations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #number_1,
+  #number_2,
+  #result {
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
+  }
+
+  .author {
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 40px;
+  }
+
+  .container-text {
+    width: 350px;
+    text-align: justify;
+    line-height: normal;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Punkty przerwania do 1199px */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  /* --- Modal window --- */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    height: 460px;
+  }
+
+  .modal-position-inside {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .input-main-spacing {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .input-spacing {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .input-capitalize-letters {
+    text-transform: uppercase;
+  }
+
+  .input-locked {
+    background-color: rgb(202, 202, 202);
+  }
+
+  #btn-modal-save {
+    height: 40px;
+    width: 120px;
+  }
+
+  #testResultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .entry {
+    padding: 0 0 10px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: inherit;
+    height: auto;
+    width: 30%;
+  }
+
+  #btn-k,
+  #btn-w,
+  #btn-error,
+  #btn-law {
+    width: 140px;
+    height: 40px;
+    padding: 20px;
+  }
+
+  .const-k,
+  .factor-w,
+  .container-result {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-container {
+    padding-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  #btn-save-test-result,
+  #btn-calculate,
+  #btn-clean,
+  #btn-measurement,
+  #btn-remove-entry {
     width: 100px;
     height: 40px;
   }
@@ -195,6 +377,62 @@
 
 /* Punkty przerwania powyżej 1200px */
 @media only screen and (min-width: 1200px) {
+  /* --- Modal window --- */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    height: 460px;
+  }
+
+  .modal-position-inside {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .input-main-spacing {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .input-spacing {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .input-capitalize-letters {
+    text-transform: uppercase;
+  }
+
+  .input-locked {
+    background-color: rgb(202, 202, 202);
+  }
+
+  #btn-modal-save {
+    height: 40px;
+    width: 120px;
+  }
+
+  #testResultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .entry {
+    padding: 0 0 10px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: inherit;
+    height: auto;
+    width: 20%;
+  }
+
   #btn-k,
   #btn-w,
   #btn-error,
@@ -222,7 +460,8 @@
   #btn-save-test-result,
   #btn-calculate,
   #btn-clean,
-  #btn-measurement {
+  #btn-measurement,
+  #btn-remove-entry {
     width: 100px;
     height: 40px;
   }

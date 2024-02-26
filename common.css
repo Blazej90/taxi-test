@@ -134,7 +134,7 @@ footer {
 #btn-calculate:active,
 #btn-clean:active,
 #btn-measurement:active,
-#btn-remove-entry {
+#btn-remove-entry:active {
   transform: scale(0.95);
 }
 
@@ -171,10 +171,9 @@ footer {
 }
 
 .sticky-search-container {
-  position: -webkit-sticky; /* Safari */
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   background-color: #9c9c99;
-  /* Dodajemy białe tło dla kontrastu */
-  z-index: 1000; /* Ustawiamy wysoki indeks warstwy, aby był zawsze na wierzchu */
+  z-index: 1000;
 }
