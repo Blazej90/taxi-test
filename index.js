@@ -224,25 +224,24 @@ function updateTestResultFromLocalStorage() {
       return;
     }
 
-    resultsContainer.innerHTML = ""; // Czyści istniejące wpisy
+    // Czyści istniejące wpisy
+    resultsContainer.innerHTML = "";
+
+    // Sortowanie wpisów od najnowszych do najstarszych
+    testResults.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
     testResults.forEach((entry, index) => {
-      // Przekształć wynik na liczbę zmiennoprzecinkową
       const resultValue = parseFloat(entry.result);
 
-      // Debugowanie
       console.log("Raw result:", entry.result);
       console.log("Parsed result value:", resultValue);
 
       // Ustal klasę koloru na podstawie wartości wyniku
-      // Błędy i wartości spoza zakresu: czerwony
-      // Poprawne wartości (od -1 do 1): zielony
       const resultColorClass =
         isNaN(resultValue) || resultValue < -1 || resultValue > 1
           ? "red-result"
           : "green-result";
 
-      // Debugowanie
       console.log("Result color class:", resultColorClass);
 
       // Formatowanie daty
