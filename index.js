@@ -157,6 +157,13 @@ function openFacebookLink() {
   window.open("https://www.facebook.com/blazejbart", "_blank");
 }
 
+function openLinkedIn() {
+  window.open(
+    "https://www.linkedin.com/in/b%C5%82a%C5%BCej-bartoszewski-36b7162b7/",
+    "_blank"
+  );
+}
+
 // Funkcja do wielkich liter
 function capitalizeInputValue(inputId) {
   const input = document.getElementById(inputId);
