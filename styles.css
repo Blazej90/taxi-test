@@ -270,7 +270,6 @@ menu#side-menu .container-definitions a {
 .const-k,
 .factor-w,
 .container-result {
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -279,34 +278,103 @@ menu#side-menu .container-definitions a {
 .const-k label,
 .factor-w label,
 .container-result label {
-  margin-bottom: 8px;
   font-weight: bold;
-  font-size: 16px; /* Powiększone etykiety */
-  color: #2c3e50; /* Kolor etykiety */
+  font-size: 16px;
+  color: #2c3e50;
 }
 
-.input-wrapper {
+/* .input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
-  max-width: 300px; /* Maksymalna szerokość inputów */
+  max-width: 300px;
   width: 100%;
 }
 
 .input-main-spacing {
   width: 100%;
   padding: 10px;
-  padding-right: 50px; /* Miejsce na jednostkę */
+  padding-right: 50px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 .unit {
   position: absolute;
-  right: 10px; /* Odstęp od prawej krawędzi inputu */
-  font-size: 14px; /* Rozmiar czcionki dla jednostek */
-  color: #888; /* Kolor czcionki dla jednostek */
-  pointer-events: none; /* Aby kliknięcia nie wpływały na jednostkę */
+  right: 10px;
+  font-size: 14px;
+  color: #888;
+  pointer-events: none;
+} */
+
+/* Stylizacja wrappera dla input */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  width: 100%;
+  margin: 20px auto; /* Centruje wrapper */
+}
+
+.input-wrapper-calculate {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  width: 100%;
+  margin: 20px auto; /* Centruje wrapper */
+}
+
+/* Stylizacja inputa z klasą .input-main-spacing-calculate */
+.input-main-spacing-calculate {
+  width: 100%;
+  padding: 15px; /* Większe wypełnienie */
+  padding-right: 60px; /* Większa przestrzeń na jednostkę */
+  border: 3px solid #2c3e50; /* Grubsza obwódka i ciemniejszy kolor */
+  border-radius: 8px; /* Zaokrąglenie rogów */
+  font-size: 18px; /* Większy rozmiar czcionki */
+  color: #2c3e50; /* Kolor tekstu */
+  background-color: #ecf0f1; /* Jasno szare tło dla lepszej czytelności */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Delikatny cień */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Płynna zmiana koloru obwódki i cienia */
+}
+
+/* Efekt focus dla inputa */
+.input-main-spacing-calculate:focus {
+  border-color: #1a242f; /* Jeszcze ciemniejszy odcień przy focusie */
+  box-shadow: 0 0 8px rgba(26, 36, 47, 0.4); /* Rozszerzony cień */
+  outline: none; /* Usunięcie domyślnego konturu */
+}
+
+/* Stylizacja inputa */
+.input-main-spacing {
+  width: 100%;
+  padding: 15px; /* Większe wypełnienie */
+  padding-right: 60px; /* Większa przestrzeń na jednostkę */
+  border: 2px solid #2980b9; /* Grubsza obwódka i ciemniejszy odcień niebieskiego */
+  border-radius: 8px; /* Zaokrąglenie rogów */
+  font-size: 18px; /* Większy rozmiar czcionki */
+  color: #2c3e50; /* Kolor tekstu */
+  background-color: #fff; /* Jasne tło dla lepszej czytelności */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Delikatny cień */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Płynna zmiana koloru obwódki i cienia */
+}
+
+/* Efekt focus */
+.input-main-spacing:focus {
+  border-color: #1f6d9c; /* Ciemniejszy odcień niebieskiego przy focusie */
+  box-shadow: 0 0 8px rgba(31, 109, 156, 0.4); /* Rozszerzony cień */
+  outline: none; /* Usunięcie domyślnego konturu */
+}
+
+/* Stylizacja jednostki */
+.unit {
+  position: absolute;
+  right: 15px;
+  font-size: 16px;
+  color: #2980b9;
+  pointer-events: none;
 }
 
 /* Stylizacja przycisków w sekcji kalkulacji */
@@ -379,20 +447,31 @@ menu#side-menu .container-definitions a {
 
 .test-result-entry button {
   background-color: #e74c3c; /* Czerwony kolor przycisku */
-  border: none;
   color: white;
+  border: none;
   padding: 10px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  border-radius: 25px; /* Zaokrąglone rogi */
+  transition: background-color 0.3s, transform 0.1s; /* Animacja tła i efekt kliknięcia */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Cień */
 }
 
 .test-result-entry button:hover {
   background-color: #c0392b; /* Ciemniejszy czerwony po najechaniu */
+}
+
+.test-result-entry button:active {
+  transform: scale(0.95); /* Efekt kliknięcia */
+}
+
+/* Kontener dla przycisku */
+.button-container {
+  text-align: center; /* Wyśrodkowanie przycisku */
+  margin-top: 10px; /* Margines u góry */
 }
 
 /* Styl dla kontenera tekstu */

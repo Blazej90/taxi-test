@@ -252,7 +252,9 @@ function updateTestResultFromLocalStorage() {
         entry.result || "-"
       }</span></p>
         <p><strong>Data:</strong> ${formattedTimestamp}</p>
-        <button onclick="removeEntry(${index})">Usuń zapis</button>
+        <div class="button-container">
+          <button onclick="removeEntry(${index})">Usuń zapis</button>
+        </div>
       `;
 
       resultsContainer.appendChild(entryDiv);
