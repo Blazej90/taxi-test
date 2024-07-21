@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function updateTestResultFromLocalStorage() {
+function updateTestResultFromLocalStorage(searchTerm = "") {
   if (window.location.pathname.includes("test_result.html")) {
     const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
     const resultsContainer = document.querySelector("#testResultsContainer");
@@ -259,36 +259,38 @@ function updateTestResultFromLocalStorage() {
       return;
     }
 
-    // Czyści istniejące wpisy
     resultsContainer.innerHTML = "";
 
-    // Sortowanie wpisów od najnowszych do najstarszych
-    testResults.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    // Filtruj wyniki na podstawie searchTerm
+    const filteredResults = testResults.filter((entry) => {
+      return (
+        entry.numberTaximeter.toLowerCase().includes(searchTerm) ||
+        entry.makeOfCar.toLowerCase().includes(searchTerm) ||
+        entry.registrationNumber.toLowerCase().includes(searchTerm) ||
+        entry.wheelsSize.toLowerCase().includes(searchTerm) ||
+        entry.const_k.toLowerCase().includes(searchTerm) ||
+        entry.factor_w.toLowerCase().includes(searchTerm) ||
+        entry.result.toLowerCase().includes(searchTerm)
+      );
+    });
 
-    testResults.forEach((entry, index) => {
-      const resultValue = parseFloat(entry.result);
+    filteredResults
+      .slice()
+      .reverse()
+      .forEach((entry, index) => {
+        const resultValue = parseFloat(entry.result);
+        const resultColorClass =
+          isNaN(resultValue) || Math.abs(resultValue) > 1
+            ? "red-result"
+            : "green-result";
+        const currentTimestamp = new Date(entry.timestamp);
+        const formattedTimestamp = currentTimestamp.toLocaleString();
 
-      console.log("Raw result:", entry.result);
-      console.log("Parsed result value:", resultValue);
+        const entryDiv = document.createElement("div");
+        entryDiv.classList.add("test-result-entry");
+        entryDiv.setAttribute("data-index", testResults.length - 1 - index);
 
-      // Ustal klasę koloru na podstawie wartości wyniku
-      const resultColorClass =
-        isNaN(resultValue) || resultValue < -1 || resultValue > 1
-          ? "red-result"
-          : "green-result";
-
-      console.log("Result color class:", resultColorClass);
-
-      // Formatowanie daty
-      const currentTimestamp = new Date(entry.timestamp);
-      const formattedTimestamp = currentTimestamp.toLocaleString();
-
-      // Tworzenie elementu dla każdego wpisu
-      const entryDiv = document.createElement("div");
-      entryDiv.classList.add("test-result-entry");
-
-      // Wypełnianie treści HTML
-      entryDiv.innerHTML = `
+        entryDiv.innerHTML = `
         <p><strong>Numer taksometru:</strong> ${
           entry.numberTaximeter || "-"
         }</p>
@@ -297,28 +299,43 @@ function updateTestResultFromLocalStorage() {
           entry.registrationNumber || "-"
         }</p>
         <p><strong>Rozmiar opon:</strong> ${entry.wheelsSize || "-"}</p>
-        <p><strong>Stała</strong> ${entry.const_k || "-"}</p>
-        <p><strong>Współczynnik:</strong> ${entry.factor_w || "-"}</p>
+        <p><strong>Stała "k":</strong> ${entry.const_k || "-"}</p>
+        <p><strong>Współczynnik "w":</strong> ${entry.factor_w || "-"}</p>
         <p><strong>Wynik:</strong> <span class="${resultColorClass}">${
-        entry.result || "-"
-      }</span></p>
+          entry.result || "-"
+        }</span></p>
         <p><strong>Data:</strong> ${formattedTimestamp}</p>
         <div class="button-container">
-          <button onclick="removeEntry(${index})">Usuń zapis</button>
+          <button data-index="${
+            testResults.length - 1 - index
+          }" onclick="removeEntry(this.getAttribute('data-index'))">Usuń zapis</button>
         </div>
       `;
 
-      resultsContainer.appendChild(entryDiv);
-    });
+        resultsContainer.appendChild(entryDiv);
+      });
   }
 }
 
-// Funkcja do usuwania wpisów
 function removeEntry(index) {
   const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
-  testResults.splice(index, 1);
-  localStorage.setItem("testResults", JSON.stringify(testResults));
-  updateTestResultFromLocalStorage(); // Odśwież widok po usunięciu
+  index = parseInt(index); // Konwertuj indeks na liczbę
+  if (index >= 0 && index < testResults.length) {
+    const resultsContainer = document.querySelector("#testResultsContainer");
+    const entryDiv = resultsContainer.querySelector(`[data-index="${index}"]`);
+
+    if (entryDiv) {
+      entryDiv.classList.add("fade-out");
+
+      setTimeout(() => {
+        testResults.splice(index, 1);
+        localStorage.setItem("testResults", JSON.stringify(testResults));
+        updateTestResultFromLocalStorage(); // Odśwież widok po usunięciu
+      }, 500); // Czas trwania animacji musi być zgodny z czasem przejścia w CSS
+    }
+  } else {
+    console.error("Nieprawidłowy indeks:", index);
+  }
 }
 
 // Funkcja do obsługi wyszukiwania
