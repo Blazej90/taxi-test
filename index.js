@@ -172,6 +172,16 @@ function capitalizeInputValue(inputId) {
     input.value = input.value.toUpperCase();
   }
 }
+
+function capitalizeUserInput(input) {
+  const words = input.value.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    words[i] =
+      words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+  }
+  input.value = words.join(" ");
+}
+
 capitalizeInputValue("modal-numberTaximeter");
 capitalizeInputValue("modal-makeOfCar");
 capitalizeInputValue("modal-registrationNumber");
@@ -190,6 +200,9 @@ function saveModalData() {
   const const_k = document.getElementById("modal-const_k").value;
   const factor_w = document.getElementById("modal-factor_w").value;
   const result = document.getElementById("modal-result").value;
+  const numberVin = document.getElementById("modal-numberVin").value;
+  const user = document.getElementById("modal-user").value;
+  const timestamp = new Date().toISOString();
 
   const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
   const currentTimestamp = new Date();
@@ -202,6 +215,8 @@ function saveModalData() {
     const_k,
     factor_w,
     result,
+    numberVin,
+    user,
     timestamp: currentTimestamp.toISOString(),
   };
 
@@ -222,6 +237,12 @@ function validateNumberTaximeter() {
   input.value = input.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
 }
 
+// Validacja dla numeru VIN
+function validateNumberVin() {
+  const input = document.getElementById("modal-numberVin");
+  input.value = input.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+}
+
 // Validacja dla numeru rejestracyjnego
 function validateRegistrationNumber() {
   const input = document.getElementById("modal-registrationNumber");
@@ -232,6 +253,15 @@ function validateRegistrationNumber() {
 function validateWheelsSize() {
   const input = document.getElementById("modal-wheelsSize");
   input.value = input.value.toUpperCase();
+}
+
+function capitalizeFirstLetter(input) {
+  const words = input.value.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    words[i] =
+      words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+  }
+  input.value = words.join(" ");
 }
 
 // Na wczytaniu strony, ustawiamy styl dla inputów
@@ -269,7 +299,9 @@ function updateTestResultFromLocalStorage(searchTerm = "") {
         entry.wheelsSize.toLowerCase().includes(searchTerm) ||
         entry.const_k.toLowerCase().includes(searchTerm) ||
         entry.factor_w.toLowerCase().includes(searchTerm) ||
-        entry.result.toLowerCase().includes(searchTerm)
+        entry.result.toLowerCase().includes(searchTerm) ||
+        entry.numberVin.toLowerCase().includes(searchTerm) ||
+        entry.user.toLowerCase().includes(searchTerm)
       );
     });
 
@@ -294,6 +326,7 @@ function updateTestResultFromLocalStorage(searchTerm = "") {
           entry.numberTaximeter || "-"
         }</p>
         <p><strong>Marka samochodu:</strong> ${entry.makeOfCar || "-"}</p>
+        <p><strong>Numer VIN:</strong> ${entry.numberVin || "-"}</p>
         <p><strong>Numer rejestracyjny:</strong> ${
           entry.registrationNumber || "-"
         }</p>
@@ -303,6 +336,7 @@ function updateTestResultFromLocalStorage(searchTerm = "") {
         <p><strong>Wynik:</strong> <span class="${resultColorClass}">${
           entry.result || "-"
         }</span></p>
+        <p><strong>Użytkownik:</strong> ${entry.user || "-"}</p>
         <p><strong>Data:</strong> ${formattedTimestamp}</p>
         <div class="button-container">
           <button data-index="${

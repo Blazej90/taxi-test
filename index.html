@@ -119,6 +119,14 @@
               id="modal-makeOfCar"
               placeholder="Marka samochodu"
               class="input-spacing input-capitalize-letters"
+              oninput="capitalizeFirstLetter(this)"
+            />
+            <input
+              type="text"
+              id="modal-numberVin"
+              placeholder="Numer VIN"
+              class="input-spacing input-capitalize-letters"
+              oninput="validateNumberVin()"
             />
             <input
               type="text"
@@ -133,6 +141,13 @@
               placeholder="Rozmiar opon"
               class="input-spacing input-capitalize-letters"
               oninput="validateWheelsSize()"
+            />
+            <input
+              type="text"
+              id="modal-user"
+              placeholder="Użytkownik"
+              class="input-spacing input-capitalize-letters"
+              oninput="capitalizeUserInput(this)"
             />
             <input
               type="text"
