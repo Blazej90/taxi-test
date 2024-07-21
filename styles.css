@@ -13,7 +13,6 @@ body {
   line-height: 1.6;
 }
 
-h1,
 h2,
 h3,
 h4,
@@ -37,27 +36,40 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
+  padding: 20px;
+  background-color: #2c3e50; /* Zmieniony kolor tła */
+  color: #ecf0f1; /* Jasny kolor tekstu */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Dodany cień */
+}
+
+.container-header .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .container-header h1 {
-  font-size: 1.5em;
+  font-size: 1.8em; /* Zwiększona czcionka */
+  margin: 0;
+  font-family: "Montserrat", sans-serif; /* Nowoczesna czcionka */
+}
+
+#icon-cab {
+  fill: #ecf0f1; /* Kolor ikony */
+  margin-right: 10px; /* Odstęp między ikoną a tytułem */
 }
 
 #hamburger-icon {
   cursor: pointer;
   width: 30px;
   height: 30px;
-  fill: black;
-  transition: fill 0.3s, transform 0.3s;
+  filter: invert(100%); /* Zmieniony kolor ikony na jasny */
+  transition: transform 0.2s; /* Dodany efekt animacji */
 }
 
-/* Efekt naciśnięcia */
-#hamburger-icon:active {
-  fill: #555;
-  transform: scale(0.95);
+#hamburger-icon:hover {
+  transform: scale(1.1); /* Efekt powiększenia przy najechaniu */
 }
 
 /* Styl menu bocznego */
