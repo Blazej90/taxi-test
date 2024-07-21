@@ -292,16 +292,23 @@ function updateTestResultFromLocalStorage(searchTerm = "") {
     resultsContainer.innerHTML = "";
 
     const filteredResults = testResults.filter((entry) => {
+      const lowerSearchTerm = searchTerm.toLowerCase();
       return (
-        entry.numberTaximeter.toLowerCase().includes(searchTerm) ||
-        entry.makeOfCar.toLowerCase().includes(searchTerm) ||
-        entry.registrationNumber.toLowerCase().includes(searchTerm) ||
-        entry.wheelsSize.toLowerCase().includes(searchTerm) ||
-        entry.const_k.toLowerCase().includes(searchTerm) ||
-        entry.factor_w.toLowerCase().includes(searchTerm) ||
-        entry.result.toLowerCase().includes(searchTerm) ||
-        entry.numberVin.toLowerCase().includes(searchTerm) ||
-        entry.user.toLowerCase().includes(searchTerm)
+        (entry.numberTaximeter &&
+          entry.numberTaximeter.toLowerCase().includes(lowerSearchTerm)) ||
+        (entry.makeOfCar &&
+          entry.makeOfCar.toLowerCase().includes(lowerSearchTerm)) ||
+        (entry.registrationNumber &&
+          entry.registrationNumber.toLowerCase().includes(lowerSearchTerm)) ||
+        (entry.wheelsSize &&
+          entry.wheelsSize.toLowerCase().includes(lowerSearchTerm)) ||
+        (entry.const_k &&
+          entry.const_k.toLowerCase().includes(lowerSearchTerm)) ||
+        (entry.factor_w &&
+          entry.factor_w.toLowerCase().includes(lowerSearchTerm)) ||
+        (entry.result &&
+          entry.result.toLowerCase().includes(lowerSearchTerm)) ||
+        (entry.user && entry.user.toLowerCase().includes(lowerSearchTerm))
       );
     });
 
