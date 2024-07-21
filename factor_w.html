@@ -27,22 +27,23 @@
         <svg id="icon-cab" width="30px" height="30px">
           <use href="./images/symbol-defs.svg#icon-cab"></use>
         </svg>
+        <img
+          src="./images/hamburger.svg"
+          alt="Menu"
+          id="hamburger-icon"
+          onclick="openMenu()"
+        />
       </div>
-      <menu>
+      <menu id="side-menu">
         <div class="container-definitions">
-          <button id="btn-k"><a href="constant_k.html">Stała "k"</a></button>
-          <button id="btn-w">
-            <a href="factor_w.html">Współczynnik "w"</a>
-          </button>
-          <button id="btn-error"><a href="error.html">Wartość błędu</a></button>
-          <button id="btn-law">
-            <a
-              href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20190001173"
-              target="_blank"
-            >
-              Podstawa prawna
-            </a>
-          </button>
+          <a href="constant_k.html">Stała "k"</a>
+          <a href="factor_w.html">Współczynnik "w"</a>
+          <a href="error.html">Wartość błędu</a>
+          <a
+            href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20190001173"
+            target="_blank"
+            >Podstawa prawna</a
+          >
         </div>
       </menu>
     </header>
@@ -65,5 +66,6 @@
         </button>
       </div>
     </main>
+    <script src="index.js"></script>
   </body>
 </html>

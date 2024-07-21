@@ -50,21 +50,37 @@ a:hover {
   cursor: pointer;
   width: 30px;
   height: 30px;
+  fill: black;
+  transition: fill 0.3s, transform 0.3s;
+}
+
+/* Efekt naciśnięcia */
+#hamburger-icon:active {
+  fill: #555;
+  transform: scale(0.95);
 }
 
 /* Styl menu bocznego */
 menu#side-menu {
-  display: none;
+  display: none; /* Ukryte domyślnie */
   position: fixed;
   top: 0;
   right: 0;
   width: 250px;
-  height: 100%;
+  height: 60%; /* Menu zajmuje 60% wysokości ekranu */
   background-color: #333;
   color: #fff;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 1000;
   padding-top: 60px;
+  overflow-y: auto; /* Dodaje pasek przewijania, jeśli zawartość jest zbyt długa */
+  transform: translateX(100%);
+  transition: transform 0.3s ease; /* Płynne przejście */
+}
+
+menu#side-menu.show {
+  display: block; /* Wyświetla menu */
+  transform: translateX(0); /* Przesuwa menu do widocznej części */
 }
 
 menu#side-menu .container-definitions {
@@ -78,6 +94,35 @@ menu#side-menu .container-definitions a {
   text-decoration: none;
   padding: 10px 0;
   border-bottom: 1px solid #444;
+}
+
+#close-menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Styl dla ikony zamykającej */
+#close-menu-icon {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#close-menu-icon:hover {
+  color: #bbb;
+}
+
+/* Styl dla przycisku hamburgera */
+#hamburger-icon {
+  cursor: pointer;
 }
 
 /* Styl modalnego okna */
@@ -282,6 +327,22 @@ menu#side-menu .container-definitions a {
 }
 
 /* Stylizacja wyników w sekcji test_result.html */
+#testResultsContainer {
+  display: grid;
+  grid-template-columns: 1fr; /* Jedna kolumna domyślnie */
+  gap: 20px; /* Odstęp między elementami */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Stylizacja dla pojedynczego wpisu wyniku testu */
+.test-result-entry {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
 .test-result-entry {
   padding: 15px;
   background-color: #fff;
@@ -333,13 +394,6 @@ menu#side-menu .container-definitions a {
     width: 100%;
   }
 
-  #btn-k,
-  #btn-w,
-  #btn-error,
-  #btn-law {
-    width: 100%;
-  }
-
   #btn-save-test-result,
   #btn-calculate,
   #btn-clean,
@@ -366,13 +420,18 @@ menu#side-menu .container-definitions a {
   }
 }
 
+/* Stylizacja dla większych ekranów */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .modal-content {
-    width: 80%;
+  #testResultsContainer {
+    grid-template-columns: 1fr 1fr; /* Dwie kolumny */
   }
 
   .test-result-entry {
-    width: 45%;
+    width: 100%; /* Zwiększona szerokość */
+  }
+
+  .modal-content {
+    width: 80%;
   }
 
   .calculations {
@@ -392,12 +451,16 @@ menu#side-menu .container-definitions a {
 }
 
 @media only screen and (min-width: 1025px) {
-  .modal-content {
-    width: 70%;
+  #testResultsContainer {
+    grid-template-columns: 1fr 1fr 1fr; /* Dwie kolumny zamiast trzech */
   }
 
   .test-result-entry {
-    width: 30%;
+    width: 80%; /* Zwiększona szerokość */
+  }
+
+  .modal-content {
+    width: 70%;
   }
 
   .calculations {

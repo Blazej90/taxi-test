@@ -73,14 +73,29 @@ function clearInputs() {
   resultInput.style.color = "";
 }
 
-// Obsługa otwierania/zamykania menu bocznego
+// Funkcja otwierająca menu
 function openMenu() {
-  document.getElementById("side-menu").style.display = "block";
+  const menu = document.getElementById("side-menu");
+  menu.style.transform = "translateX(0)"; // Przesuń menu do widocznej pozycji
+  menu.style.display = "block"; // Ustaw display na block, aby menu było dostępne
 }
 
+// Funkcja zamykająca menu
 function closeMenu() {
-  document.getElementById("side-menu").style.display = "none";
+  const menu = document.getElementById("side-menu");
+  menu.style.transform = "translateX(100%)"; // Przesuń menu poza ekran
+  setTimeout(() => {
+    menu.style.display = "none"; // Ukryj menu po zakończeniu animacji
+  }, 300); // Czas trwania animacji
 }
+
+// Dodaj nasłuchiwacze zdarzeń do ikon
+document.addEventListener("DOMContentLoaded", (event) => {
+  document.getElementById("hamburger-icon").addEventListener("click", openMenu);
+  document
+    .getElementById("close-menu-icon")
+    .addEventListener("click", closeMenu);
+});
 
 // Obsługa otwierania/zamykania modala z efektami wysuwania
 function openModal() {
