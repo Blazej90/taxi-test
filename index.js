@@ -8,6 +8,16 @@ function handleInput(input) {
   input.value = Math.floor(input.value);
 }
 
+document.querySelectorAll(".input-main-spacing").forEach((input) => {
+  input.addEventListener("input", function () {
+    // Zamienia wartość na liczbę całkowitą dodatnią
+    this.value = this.value.replace(/[^0-9]/g, ""); // Usuwa wszystko, co nie jest cyfrą
+    if (this.value < 0) {
+      this.value = "";
+    }
+  });
+});
+
 // Wyświetl wynik w polu input
 function displayResult(result) {
   const resultInput = document.getElementById("result");
@@ -122,17 +132,6 @@ window.onclick = function (event) {
   }
 };
 
-// Przeciąganie modala
-let startX, startY;
-
-// document.getElementById("myModal").addEventListener("mousedown", function (e) {
-//   startX = e.clientX;
-//   startY = e.clientY;
-
-//   document.addEventListener("mousemove", onMouseMove);
-//   document.addEventListener("mouseup", onMouseUp);
-// });
-
 function onMouseMove(e) {
   const diffX = Math.abs(e.clientX - startX);
   const diffY = Math.abs(e.clientY - startY);
@@ -228,15 +227,33 @@ function updateTestResultFromLocalStorage() {
     resultsContainer.innerHTML = ""; // Czyści istniejące wpisy
 
     testResults.forEach((entry, index) => {
-      const resultValue = parseFloat(entry.result) || 0;
+      // Przekształć wynik na liczbę zmiennoprzecinkową
+      const resultValue = parseFloat(entry.result);
+
+      // Debugowanie
+      console.log("Raw result:", entry.result);
+      console.log("Parsed result value:", resultValue);
+
+      // Ustal klasę koloru na podstawie wartości wyniku
+      // Błędy i wartości spoza zakresu: czerwony
+      // Poprawne wartości (od -1 do 1): zielony
+      const resultColorClass =
+        isNaN(resultValue) || resultValue < -1 || resultValue > 1
+          ? "red-result"
+          : "green-result";
+
+      // Debugowanie
+      console.log("Result color class:", resultColorClass);
+
+      // Formatowanie daty
       const currentTimestamp = new Date(entry.timestamp);
       const formattedTimestamp = currentTimestamp.toLocaleString();
 
-      const resultColorClass = resultValue > 1 ? "red-result" : "green-result";
-
+      // Tworzenie elementu dla każdego wpisu
       const entryDiv = document.createElement("div");
       entryDiv.classList.add("test-result-entry");
 
+      // Wypełnianie treści HTML
       entryDiv.innerHTML = `
         <p><strong>Numer taksometru:</strong> ${
           entry.numberTaximeter || "-"
@@ -268,58 +285,6 @@ function removeEntry(index) {
   testResults.splice(index, 1);
   localStorage.setItem("testResults", JSON.stringify(testResults));
   updateTestResultFromLocalStorage(); // Odśwież widok po usunięciu
-}
-
-// Funkcja do aktualizacji wyników testu
-function updateTestResultFromLocalStorage(searchInput = "") {
-  if (window.location.pathname.includes("test_result.html")) {
-    const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
-    const resultsContainer = document.querySelector("#testResultsContainer");
-    resultsContainer.innerHTML = ""; // Czyści istniejące wpisy
-
-    // Przetwarzamy testResults w odwrotnej kolejności, aby najnowsze były na górze
-    for (let i = testResults.length - 1; i >= 0; i--) {
-      const entry = testResults[i];
-      const resultValue = parseFloat(entry.result) || 0;
-      const currentTimestamp = new Date(entry.timestamp);
-      const formattedTimestamp = currentTimestamp.toLocaleString();
-
-      const resultColorClass = resultValue > 1 ? "red-result" : "green-result";
-
-      const entryValues = [
-        entry.numberTaximeter,
-        entry.makeOfCar,
-        entry.registrationNumber,
-      ].map((value) => (value || "").toLowerCase());
-
-      if (
-        entryValues.some((value) => value.includes(searchInput.toLowerCase()))
-      ) {
-        const entryDiv = document.createElement("div");
-        entryDiv.classList.add("test-result-entry");
-
-        entryDiv.innerHTML = `
-          <p><strong>Numer taksometru:</strong> ${
-            entry.numberTaximeter || "-"
-          }</p>
-          <p><strong>Marka samochodu:</strong> ${entry.makeOfCar || "-"}</p>
-          <p><strong>Numer rejestracyjny:</strong> ${
-            entry.registrationNumber || "-"
-          }</p>
-          <p><strong>Rozmiar opon:</strong> ${entry.wheelsSize || "-"}</p>
-          <p><strong>Stała</strong> ${entry.const_k || "-"}</p>
-          <p><strong>Współczynnik</strong> ${entry.factor_w || "-"}</p>
-          <p><strong>Wynik:</strong> <span class="${resultColorClass}">${
-          entry.result || "-"
-        }</span></p>
-          <p><strong>Data:</strong> ${formattedTimestamp}</p>
-          <button onclick="removeEntry(${i})">Usuń zapis</button>
-        `;
-
-        resultsContainer.append(entryDiv);
-      }
-    }
-  }
 }
 
 // Funkcja do obsługi wyszukiwania
