@@ -1,530 +1,415 @@
-.title {
-  padding-right: 20px;
+/* Resetowanie domyślnych stylów przeglądarki */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Ogólne style */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #2c3e50;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #2980b9;
+}
+
+/* Styl nagłówka */
 .container-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
 }
 
-/* Punkty przerwania od 320px do 479px */
-@media only screen and (min-width: 320px) and (max-width: 479px) {
-  /* --- Modal window --- */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-  }
-
-  .modal-position-inside {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-
-  .input-main-spacing {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .input-spacing {
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .input-capitalize-letters {
-    text-transform: uppercase;
-  }
-
-  .input-locked {
-    background-color: rgb(202, 202, 202);
-  }
-
-  #btn-k,
-  #btn-w,
-  #btn-error,
-  #btn-law {
-    width: 140px;
-    height: 40px;
-    padding: 20px;
-  }
-
-  .const-k,
-  .factor-w,
-  .container-result {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .btn-container {
-    padding-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  #btn-save-test-result,
-  #btn-calculate,
-  #btn-clean,
-  #btn-measurement,
-  #btn-remove-entry {
-    width: 100px;
-    height: 40px;
-  }
-
-  #btn-modal-save {
-    height: 40px;
-    width: 120px;
-  }
-
-  .calculations {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #number_1,
-  #number_2,
-  #result {
-    width: 100px;
-    height: 40px;
-    box-sizing: border-box;
-  }
-
-  .author {
-    margin-top: 30px;
-    padding-top: 5px;
-    padding-bottom: 40px;
-  }
-
-  .container-text {
-    width: 350px;
-    text-align: justify;
-    line-height: normal;
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
+.container-header h1 {
+  font-size: 1.5em;
 }
 
-.red-result {
-  color: red;
+#hamburger-icon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
 
-.green-result {
-  color: green;
-}
-
-.container-btn-home-page {
-  margin-top: 15px;
-}
-
-#testResultsContainer {
-  margin: 10px;
-}
-
-.input-search {
-  margin: 10px 0 10px 0;
-  height: 40px;
+/* Styl menu bocznego */
+menu#side-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
   width: 250px;
-  font-size: large;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding-top: 60px;
 }
 
-/* Punkty przerwania od 480px do 767px */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-  /* --- Modal window --- */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 400px;
-    height: 460px;
-  }
-
-  .modal-position-inside {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-
-  .input-main-spacing {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .input-spacing {
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .input-capitalize-letters {
-    text-transform: uppercase;
-  }
-
-  .input-locked {
-    background-color: rgb(202, 202, 202);
-  }
-
-  #btn-modal-save {
-    height: 40px;
-    width: 120px;
-  }
-
-  #testResultsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .entry {
-    padding: 0 0 10px 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: inherit;
-    height: auto;
-    width: 30%;
-  }
-
-  #btn-k,
-  #btn-w,
-  #btn-error,
-  #btn-law {
-    width: 140px;
-    height: 40px;
-    padding: 20px;
-  }
-
-  .const-k,
-  .factor-w,
-  .container-result {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .btn-container {
-    padding-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  #btn-save-test-result,
-  #btn-calculate,
-  #btn-clean,
-  #btn-measurement,
-  #btn-remove-entry {
-    width: 100px;
-    height: 40px;
-  }
-
-  .calculations {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #number_1,
-  #number_2,
-  #result {
-    width: 100px;
-    height: 40px;
-    box-sizing: border-box;
-  }
-
-  .author {
-    margin-top: 30px;
-    padding-top: 5px;
-    padding-bottom: 40px;
-  }
-
-  .container-text {
-    width: 350px;
-    text-align: justify;
-    line-height: normal;
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
+menu#side-menu .container-definitions {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
-/* Punkty przerwania do 1199px */
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-  /* --- Modal window --- */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 400px;
-    height: 460px;
-  }
-
-  .modal-position-inside {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-
-  .input-main-spacing {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .input-spacing {
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .input-capitalize-letters {
-    text-transform: uppercase;
-  }
-
-  .input-locked {
-    background-color: rgb(202, 202, 202);
-  }
-
-  #btn-modal-save {
-    height: 40px;
-    width: 120px;
-  }
-
-  #testResultsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .entry {
-    padding: 0 0 10px 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: inherit;
-    height: auto;
-    width: 30%;
-  }
-
-  #btn-k,
-  #btn-w,
-  #btn-error,
-  #btn-law {
-    width: 140px;
-    height: 40px;
-    padding: 20px;
-  }
-
-  .const-k,
-  .factor-w,
-  .container-result {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .btn-container {
-    padding-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  #btn-save-test-result,
-  #btn-calculate,
-  #btn-clean,
-  #btn-measurement,
-  #btn-remove-entry {
-    width: 100px;
-    height: 40px;
-  }
-
-  .calculations {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #number_1,
-  #number_2,
-  #result {
-    width: 100px;
-    height: 40px;
-    box-sizing: border-box;
-  }
-
-  .author {
-    margin-top: 30px;
-    padding-top: 5px;
-    padding-bottom: 40px;
-  }
-
-  .container-text {
-    width: 350px;
-    text-align: justify;
-    line-height: normal;
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
+menu#side-menu .container-definitions a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #444;
 }
 
-/* Punkty przerwania powyżej 1200px */
-@media only screen and (min-width: 1200px) {
-  /* --- Modal window --- */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 400px;
-    height: 460px;
-  }
-
-  .modal-position-inside {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-
-  .input-main-spacing {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .input-spacing {
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .input-capitalize-letters {
-    text-transform: uppercase;
-  }
-
-  .input-locked {
-    background-color: rgb(202, 202, 202);
-  }
-
-  #btn-modal-save {
-    height: 40px;
-    width: 120px;
-  }
-
-  #testResultsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .entry {
-    padding: 0 0 10px 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: inherit;
-    height: auto;
-    width: 20%;
-  }
-
-  #btn-k,
-  #btn-w,
-  #btn-error,
-  #btn-law {
-    width: 140px;
-    height: 40px;
-    padding: 20px;
-  }
-
-  .const-k,
-  .factor-w,
-  .container-result {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .btn-container {
-    padding-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  #btn-save-test-result,
-  #btn-calculate,
-  #btn-clean,
-  #btn-measurement,
-  #btn-remove-entry {
-    width: 100px;
-    height: 40px;
-  }
-
-  .calculations {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #number_1,
-  #number_2,
-  #result {
-    width: 100px;
-    height: 40px;
-    box-sizing: border-box;
-  }
-
-  .author {
-    margin-top: 30px;
-    padding-top: 5px;
-    padding-bottom: 40px;
-  }
-
-  .container-text {
-    width: 350px;
-    text-align: justify;
-    line-height: normal;
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
-}
-
-/* --- Modal window --- */
+/* Styl modalnego okna */
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* Spowolnione wysuwanie */
 }
 
-/* .modal-content {
+.modal.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
-} */
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  border-radius: 10px; /* Zaokrąglenie narożników */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień dla efektu unoszenia */
+}
 
+/* Przyciski zamykania */
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .close:hover {
-  color: black;
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.close:active {
+  transform: scale(0.9);
+}
+
+.close::before {
+  font-size: 20px;
+  color: #000;
+}
+
+/* Stylizacja etykiet w modal */
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Stylizacja inputów w modal */
+.modal-content input[type="text"],
+.modal-content input[type="number"] {
+  width: calc(100% - 22px); /* Dopasuj szerokość do kontenera z paddingiem */
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Przycisk zapisz */
+.modal-content #btn-modal-save {
+  background-color: #4caf50; /* Zielony kolor */
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
   text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
   cursor: pointer;
+  border-radius: 5px; /* Zaokrąglenie narożników */
+}
+
+.modal-content #btn-modal-save:hover {
+  background-color: #45a049; /* Ciemniejszy zielony po najechaniu */
+}
+
+/* Stylizacja dla wyników */
+.result-value {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.modal-position-inside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Stylizacja sekcji kalkulacji */
+.calculations {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff; /* Kolor tła dla sekcji kalkulacji */
+  border-radius: 10px; /* Zaokrąglenie narożników */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień dla efektu unoszenia */
+}
+
+/* Stylizacja poszczególnych elementów w sekcji kalkulacji */
+.const-k,
+.factor-w,
+.container-result {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.const-k label,
+.factor-w label,
+.container-result label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 16px; /* Powiększone etykiety */
+  color: #2c3e50; /* Kolor etykiety */
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 300px; /* Maksymalna szerokość inputów */
+  width: 100%;
+}
+
+.input-main-spacing {
+  width: 100%;
+  padding: 10px;
+  padding-right: 50px; /* Miejsce na jednostkę */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.unit {
+  position: absolute;
+  right: 10px; /* Odstęp od prawej krawędzi inputu */
+  font-size: 14px; /* Rozmiar czcionki dla jednostek */
+  color: #888; /* Kolor czcionki dla jednostek */
+  pointer-events: none; /* Aby kliknięcia nie wpływały na jednostkę */
+}
+
+/* Stylizacja przycisków w sekcji kalkulacji */
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Odstęp między przyciskami */
+  align-items: center;
+}
+
+.btn-container button {
+  width: 100%;
+  max-width: 200px; /* Maksymalna szerokość przycisków */
+  height: 45px;
+  border-radius: 25px;
+  border: none;
+  color: white;
+  background-color: #3498db; /* Kolor przycisku */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-container button:hover {
+  background-color: #2980b9; /* Ciemniejszy kolor przycisku po najechaniu */
+  transform: scale(1.05);
+}
+
+.btn-container button:active {
+  transform: scale(0.95);
+}
+
+/* Stylizacja wyników w sekcji test_result.html */
+.test-result-entry {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.test-result-entry p {
+  margin: 5px 0;
+}
+
+.red-result {
+  color: red;
+  font-weight: bold;
+}
+
+.green-result {
+  color: green;
+  font-weight: bold;
+}
+
+.test-result-entry button {
+  background-color: #e74c3c; /* Czerwony kolor przycisku */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.test-result-entry button:hover {
+  background-color: #c0392b; /* Ciemniejszy czerwony po najechaniu */
+}
+
+/* Responsywne style */
+@media only screen and (max-width: 767px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .test-result-entry {
+    width: 100%;
+  }
+
+  #btn-k,
+  #btn-w,
+  #btn-error,
+  #btn-law {
+    width: 100%;
+  }
+
+  #btn-save-test-result,
+  #btn-calculate,
+  #btn-clean,
+  #btn-measurement,
+  #btn-remove-entry {
+    width: 100%;
+  }
+
+  .container-text {
+    width: 90%;
+  }
+
+  .calculations {
+    padding: 15px;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    gap: 10px; /* Mniejszy odstęp między przyciskami na mniejszych ekranach */
+  }
+
+  .btn-container button {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .modal-content {
+    width: 80%;
+  }
+
+  .test-result-entry {
+    width: 45%;
+  }
+
+  .calculations {
+    padding: 20px;
+  }
+
+  .btn-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-container button {
+    width: 100%;
+    max-width: 150px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .modal-content {
+    width: 70%;
+  }
+
+  .test-result-entry {
+    width: 30%;
+  }
+
+  .calculations {
+    padding: 20px;
+  }
+
+  .btn-container {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .btn-container button {
+    max-width: 200px;
+  }
 }

@@ -28,22 +28,23 @@
         <svg id="icon-cab" width="30px" height="30px">
           <use href="./images/symbol-defs.svg#icon-cab"></use>
         </svg>
+        <img
+          src="./images/hamburger.svg"
+          alt="Menu"
+          id="hamburger-icon"
+          onclick="openMenu()"
+        />
       </div>
-      <menu>
+      <menu id="side-menu">
         <div class="container-definitions">
-          <button id="btn-k"><a href="constant_k.html">Stała "k"</a></button>
-          <button id="btn-w">
-            <a href="factor_w.html">Współczynnik "w"</a>
-          </button>
-          <button id="btn-error"><a href="error.html">Wartość błędu</a></button>
-          <button id="btn-law">
-            <a
-              href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20190001173"
-              target="_blank"
-            >
-              Podstawa prawna
-            </a>
-          </button>
+          <a href="constant_k.html">Stała "k"</a>
+          <a href="factor_w.html">Współczynnik "w"</a>
+          <a href="error.html">Wartość błędu</a>
+          <a
+            href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20190001173"
+            target="_blank"
+            >Podstawa prawna</a
+          >
         </div>
       </menu>
     </header>
@@ -51,24 +52,35 @@
       <div class="calculations">
         <div class="const-k">
           <label for="number_1">stała "k"</label>
-          <input type="number" id="number_1" class="input-main-spacing" />
-          <p>imp/km</p>
+          <div class="input-wrapper">
+            <input type="number" id="number_1" class="input-main-spacing" />
+            <span class="unit">imp/km</span>
+          </div>
         </div>
         <div class="factor-w">
           <label for="number_2">współczynnik "w"</label>
-          <input type="number" id="number_2" class="input-main-spacing" />
-          <p>imp/km</p>
+          <div class="input-wrapper">
+            <input type="number" id="number_2" class="input-main-spacing" />
+            <span class="unit">imp/km</span>
+          </div>
         </div>
         <div class="container-result">
           <label for="result">Wynik:</label>
-          <input type="text" id="result" readonly class="input-main-spacing" />
-          <p>%</p>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="result"
+              readonly
+              class="input-main-spacing"
+            />
+            <span class="unit">%</span>
+          </div>
         </div>
         <div class="btn-container">
+          <button id="btn-calculate" onclick="calculate()">Oblicz</button>
           <button id="btn-save-test-result" onclick="openModal()">
             Zapisz
           </button>
-          <button id="btn-calculate" onclick="calculate()">Oblicz</button>
           <button id="btn-clean" onclick="clearInputs()">Wyczyść</button>
           <button id="btn-measurement" onclick="redirectMeasurementPage()">
             Pomiary

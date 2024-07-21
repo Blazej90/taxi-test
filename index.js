@@ -8,8 +8,8 @@ function handleInput(input) {
   input.value = Math.floor(input.value);
 }
 
+// Wyświetl wynik w polu input
 function displayResult(result) {
-  // Wyświetl wynik w polu input
   const resultInput = document.getElementById("result");
   resultInput.value = result;
 
@@ -23,8 +23,8 @@ function displayResult(result) {
   }
 }
 
+// Oblicz wynik i opcjonalnie otwórz modal
 function calculate(openModalAfterCalculation = false) {
-  // Pobierz wartości z pól input
   const number1 = parseFloat(document.getElementById("number_1").value);
   const number2 = parseFloat(document.getElementById("number_2").value);
 
@@ -56,11 +56,7 @@ function calculate(openModalAfterCalculation = false) {
 
   // Ustaw kolor pola wynikowego w oknie modalnym
   const resultInput = document.getElementById("modal-result");
-  if (Math.abs(result) > 1) {
-    resultInput.style.color = "red";
-  } else {
-    resultInput.style.color = "green";
-  }
+  resultInput.style.color = Math.abs(result) > 1 ? "red" : "green";
 
   // Otwórz okno modalne tylko jeśli openModalAfterCalculation jest true
   if (openModalAfterCalculation) {
@@ -68,16 +64,76 @@ function calculate(openModalAfterCalculation = false) {
   }
 }
 
-// Dodana funkcja do czyszczenia inputów
+// Czyszczenie pól inputów
 function clearInputs() {
   const resultInput = document.getElementById("result");
   document.getElementById("number_1").value = "";
   document.getElementById("number_2").value = "";
   resultInput.value = "";
-  resultInput.style.color = ""; // Przywróć domyślny kolor
+  resultInput.style.color = "";
 }
 
-// Otwieranie linków social-media //
+// Obsługa otwierania/zamykania menu bocznego
+function openMenu() {
+  document.getElementById("side-menu").style.display = "block";
+}
+
+function closeMenu() {
+  document.getElementById("side-menu").style.display = "none";
+}
+
+// Obsługa otwierania/zamykania modala z efektami wysuwania
+function openModal() {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "block";
+  setTimeout(() => {
+    modal.classList.add("show");
+  }, 10); // Opóźnienie, aby umożliwić transition
+}
+
+function closeModal() {
+  const modal = document.getElementById("myModal");
+  modal.classList.remove("show");
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 500); // Opóźnienie zgodne z czasem transition w CSS
+}
+
+// Zamknięcie modalnego okna przy kliknięciu poza nim
+window.onclick = function (event) {
+  const modal = document.getElementById("myModal");
+  if (event.target === modal) {
+    closeModal();
+  }
+};
+
+// Przeciąganie modala
+let startX, startY;
+
+// document.getElementById("myModal").addEventListener("mousedown", function (e) {
+//   startX = e.clientX;
+//   startY = e.clientY;
+
+//   document.addEventListener("mousemove", onMouseMove);
+//   document.addEventListener("mouseup", onMouseUp);
+// });
+
+function onMouseMove(e) {
+  const diffX = Math.abs(e.clientX - startX);
+  const diffY = Math.abs(e.clientY - startY);
+
+  if (diffX > 10 || diffY > 10) {
+    closeModal();
+    onMouseUp(); // Usunięcie nasłuchiwań
+  }
+}
+
+function onMouseUp() {
+  document.removeEventListener("mousemove", onMouseMove);
+  document.removeEventListener("mouseup", onMouseUp);
+}
+
+// Otwarcie linków social-media
 function openGitHubLink() {
   window.open("https://github.com/Blazej90", "_blank");
 }
@@ -86,22 +142,9 @@ function openFacebookLink() {
   window.open("https://www.facebook.com/blazejbart", "_blank");
 }
 
-// Modal window //
-function openModal() {
-  const modal = document.getElementById("myModal");
-  modal.style.display = "block";
-}
-
-function closeModal() {
-  const modal = document.getElementById("myModal");
-  modal.style.display = "none";
-}
-
-// Funkcja do wielkich liter//
+// Funkcja do wielkich liter
 function capitalizeInputValue(inputId) {
   const input = document.getElementById(inputId);
-
-  // Dodaj sprawdzenie, czy input nie jest nullem
   if (input) {
     input.value = input.value.toUpperCase();
   }
@@ -113,7 +156,6 @@ capitalizeInputValue("modal-wheelsSize");
 
 // Funkcja do zapisu danych w localStorage i przekierowania na test_result.html
 function saveModalData() {
-  // Pobierz wartości z pól formularza modalnego
   const numberTaximeter = document.getElementById(
     "modal-numberTaximeter"
   ).value;
@@ -126,13 +168,9 @@ function saveModalData() {
   const factor_w = document.getElementById("modal-factor_w").value;
   const result = document.getElementById("modal-result").value;
 
-  // Sprawdź, czy tablica już istnieje w localStorage
   const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
-
-  // Dodaj timestamp do wpisu
   const currentTimestamp = new Date();
 
-  // Dodaj nowy wpis do tablicy
   const newEntry = {
     numberTaximeter,
     makeOfCar,
@@ -141,138 +179,149 @@ function saveModalData() {
     const_k,
     factor_w,
     result,
-    timestamp: currentTimestamp.toISOString(), // Dodaj timestamp w formie ISO
+    timestamp: currentTimestamp.toISOString(),
   };
 
-  // Dodaj nowy wpis na początek tablicy
-  testResults.unshift(newEntry);
-
-  // Zapisz zaktualizowaną tablicę do localStorage
+  testResults.push(newEntry);
   localStorage.setItem("testResults", JSON.stringify(testResults));
 
-  // Przekieruj na stronę test_result.html
+  // Przekierowanie do test_result.html
   window.location.href = "test_result.html";
-
-  // Zamknij okno modalne
-  closeModal();
 }
 
-// Funkcja do aktualizacji danych z localStorage na stronie test_result.html
+document.addEventListener("DOMContentLoaded", function () {
+  updateTestResultFromLocalStorage();
+});
+
 function updateTestResultFromLocalStorage() {
-  // Sprawdź, czy bieżąca strona to test_result.html
-  const isTestResultPage =
-    window.location.pathname.includes("test_result.html");
-
-  if (isTestResultPage) {
-    // Pobierz tablicę z localStorage
+  if (window.location.pathname.includes("test_result.html")) {
     const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
+    const resultsContainer = document.querySelector("#testResultsContainer");
 
-    // Wyczyść aktualny widok przed dodaniem nowych wpisów
-    const testResultsContainer = document.getElementById(
-      "testResultsContainer"
-    );
-    testResultsContainer.innerHTML = "";
+    if (!resultsContainer) {
+      console.error("Element testResultsContainer nie został znaleziony!");
+      return;
+    }
 
-    // Iteruj przez wpisy i aktualizuj widok na stronie
+    resultsContainer.innerHTML = ""; // Czyści istniejące wpisy
+
     testResults.forEach((entry, index) => {
       const resultValue = parseFloat(entry.result) || 0;
       const currentTimestamp = new Date(entry.timestamp);
       const formattedTimestamp = currentTimestamp.toLocaleString();
 
-      // Określ klasę dla koloru wyniku
       const resultColorClass = resultValue > 1 ? "red-result" : "green-result";
 
-      const entryContainer = document.createElement("div");
+      const entryDiv = document.createElement("div");
+      entryDiv.classList.add("test-result-entry");
 
-      // Ustaw klasę dla wpisu
-      entryContainer.classList.add("entry");
-
-      // Ustaw atrybuty data- dla wpisu
-      entryContainer.dataset.numberTaximeter = entry.numberTaximeter;
-      entryContainer.dataset.makeOfCar = entry.makeOfCar;
-      entryContainer.dataset.registrationNumber = entry.registrationNumber;
-
-      // Ustaw zawartość wpisu
-      entryContainer.innerHTML = `
-    <p>Data: ${formattedTimestamp}</p>
-    <p>Numer taksometru: <span>${(
-      entry.numberTaximeter || "-"
-    ).toUpperCase()}</span></p>
-    <p>Marka samochodu: <span>${(
-      entry.makeOfCar || "-"
-    ).toUpperCase()}</span></p>
-    <p>Numer rejestracyjny: <span>${(
-      entry.registrationNumber || "-"
-    ).toUpperCase()}</span></p>
-    <p>Rozmiar opon: <span>${(entry.wheelsSize || "-").toUpperCase()}</span></p>
-    <span><b>${entry.const_k || "-"}</b></span> 
-    <p> </p>
-    <span><b>${entry.factor_w || "-"}</b></span> 
-    <p>Wynik: <span class="${resultColorClass}">${
+      entryDiv.innerHTML = `
+        <p><strong>Numer taksometru:</strong> ${
+          entry.numberTaximeter || "-"
+        }</p>
+        <p><strong>Marka samochodu:</strong> ${entry.makeOfCar || "-"}</p>
+        <p><strong>Numer rejestracyjny:</strong> ${
+          entry.registrationNumber || "-"
+        }</p>
+        <p><strong>Rozmiar opon:</strong> ${entry.wheelsSize || "-"}</p>
+        <p><strong>Stała "k":</strong> ${entry.const_k || "-"}</p>
+        <p><strong>Współczynnik "w":</strong> ${entry.factor_w || "-"}</p>
+        <p><strong>Wynik:</strong> <span class="${resultColorClass}">${
         entry.result || "-"
       }</span></p>
-    <button id="btn-remove-entry" onclick="removeEntry(${index})">Usuń zapis</button>
-    <hr>
-`;
+        <p><strong>Data:</strong> ${formattedTimestamp}</p>
+        <button onclick="removeEntry(${index})">Usuń zapis</button>
+      `;
 
-      // Dodaj utworzony wpis do kontenera wpisów
-      testResultsContainer.appendChild(entryContainer);
-
-      // Dodaj nowy wpis do sekcji wyników
-      testResultsContainer.appendChild(entryContainer);
+      resultsContainer.appendChild(entryDiv);
     });
   }
 }
 
-// Funkcja do usuwania wpisu po indeksie
+// Funkcja do usuwania wpisów
 function removeEntry(index) {
-  // Pobierz tablicę z localStorage
   const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
-
-  // Usuń wpis o danym indeksie
   testResults.splice(index, 1);
-
-  // Zapisz zaktualizowaną tablicę z powrotem do localStorage
   localStorage.setItem("testResults", JSON.stringify(testResults));
-
-  // Odśwież widok na stronie
-  updateTestResultFromLocalStorage();
+  updateTestResultFromLocalStorage(); // Odśwież widok po usunięciu
 }
 
-// Wywołaj funkcję przy załadowaniu strony lub w odpowiednim momencie
-updateTestResultFromLocalStorage();
+// Funkcja do aktualizacji wyników testu
+function updateTestResultFromLocalStorage(searchInput = "") {
+  if (window.location.pathname.includes("test_result.html")) {
+    const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
+    const resultsContainer = document.querySelector("#testResultsContainer");
+    resultsContainer.innerHTML = ""; // Czyści istniejące wpisy
 
-// Otwarcie strony test_result.html
+    // Przetwarzamy testResults w odwrotnej kolejności, aby najnowsze były na górze
+    for (let i = testResults.length - 1; i >= 0; i--) {
+      const entry = testResults[i];
+      const resultValue = parseFloat(entry.result) || 0;
+      const currentTimestamp = new Date(entry.timestamp);
+      const formattedTimestamp = currentTimestamp.toLocaleString();
+
+      const resultColorClass = resultValue > 1 ? "red-result" : "green-result";
+
+      const entryValues = [
+        entry.numberTaximeter,
+        entry.makeOfCar,
+        entry.registrationNumber,
+      ].map((value) => (value || "").toLowerCase());
+
+      if (
+        entryValues.some((value) => value.includes(searchInput.toLowerCase()))
+      ) {
+        const entryDiv = document.createElement("div");
+        entryDiv.classList.add("test-result-entry");
+
+        entryDiv.innerHTML = `
+          <p><strong>Numer taksometru:</strong> ${
+            entry.numberTaximeter || "-"
+          }</p>
+          <p><strong>Marka samochodu:</strong> ${entry.makeOfCar || "-"}</p>
+          <p><strong>Numer rejestracyjny:</strong> ${
+            entry.registrationNumber || "-"
+          }</p>
+          <p><strong>Rozmiar opon:</strong> ${entry.wheelsSize || "-"}</p>
+          <p><strong>Stała</strong> ${entry.const_k || "-"}</p>
+          <p><strong>Współczynnik</strong> ${entry.factor_w || "-"}</p>
+          <p><strong>Wynik:</strong> <span class="${resultColorClass}">${
+          entry.result || "-"
+        }</span></p>
+          <p><strong>Data:</strong> ${formattedTimestamp}</p>
+          <button onclick="removeEntry(${i})">Usuń zapis</button>
+        `;
+
+        resultsContainer.append(entryDiv);
+      }
+    }
+  }
+}
+
+// Funkcja do obsługi wyszukiwania
+function searchEntries() {
+  const searchInput = document
+    .getElementById("searchInput")
+    .value.toLowerCase();
+  updateTestResultFromLocalStorage(searchInput);
+}
+
+// Dodanie event listenera dla inputa wyszukiwania po załadowaniu dokumentu
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.pathname.includes("test_result.html")) {
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+      searchInput.addEventListener("input", searchEntries);
+    }
+    updateTestResultFromLocalStorage(); // Załaduj wszystkie wyniki na początku
+  }
+});
+
+// Wywołaj funkcję aktualizacji wyników, jeśli na stronie test_result.html
+document.addEventListener("DOMContentLoaded", function () {
+  updateTestResultFromLocalStorage();
+});
+
 function redirectMeasurementPage() {
   window.location.href = "test_result.html";
-}
-
-// Wyszukiwanie wyników pomiaru
-function searchEntries() {
-  let searchText = document.getElementById("searchInput").value.toLowerCase();
-  let entries = document.querySelectorAll(".entry");
-
-  let displayNoResultsMessage = true; // Ustawiamy flagę na true, zakładając, że nie znaleziono żadnych wyników
-
-  entries.forEach(function (entry) {
-    let numberTaximeter = entry.dataset.numberTaximeter.toLowerCase();
-    let makeOfCar = entry.dataset.makeOfCar.toLowerCase();
-    let registrationNumber = entry.dataset.registrationNumber.toLowerCase();
-
-    if (
-      numberTaximeter.includes(searchText) ||
-      makeOfCar.includes(searchText) ||
-      registrationNumber.includes(searchText)
-    ) {
-      entry.style.display = "block";
-      displayNoResultsMessage = false; // Znaleziono wyniki, więc ustawiamy flagę na false
-    } else {
-      entry.style.display = "none";
-    }
-  });
-
-  // Wyświetl alert, jeśli nie znaleziono żadnych wyników
-  if (displayNoResultsMessage) {
-    alert("Brak wyników wyszukiwania...");
-  }
 }
