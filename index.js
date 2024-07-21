@@ -86,17 +86,19 @@ function clearInputs() {
 // Funkcja otwierająca menu
 function openMenu() {
   const menu = document.getElementById("side-menu");
-  menu.style.transform = "translateX(0)"; // Przesuń menu do widocznej pozycji
-  menu.style.display = "block"; // Ustaw display na block, aby menu było dostępne
+  menu.style.transform = "translateX(0)";
+  setTimeout(() => {
+    menu.style.display = "block";
+  }, 300);
 }
 
 // Funkcja zamykająca menu
 function closeMenu() {
   const menu = document.getElementById("side-menu");
-  menu.style.transform = "translateX(100%)"; // Przesuń menu poza ekran
+  menu.style.transform = "translateX(100%)";
   setTimeout(() => {
-    menu.style.display = "none"; // Ukryj menu po zakończeniu animacji
-  }, 300); // Czas trwania animacji
+    menu.style.display = "none";
+  }, 300);
 }
 
 // Dodaj nasłuchiwacze zdarzeń do ikon
