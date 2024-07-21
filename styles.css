@@ -57,7 +57,11 @@ a:hover {
 
 #icon-cab {
   fill: #ecf0f1; /* Kolor ikony */
-  margin-right: 10px; /* Odstęp między ikoną a tytułem */
+}
+
+#icon-home3 {
+  fill: #ecf0f1;
+  margin-right: 0px;
 }
 
 #hamburger-icon {
@@ -438,26 +442,32 @@ menu#side-menu .container-definitions a {
 }
 
 .test-result-entry button {
-  background-color: #e74c3c; /* Czerwony kolor przycisku */
+  background-color: #e74c3c;
   color: white;
   border: none;
   padding: 10px 15px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex; /* Zmiana na inline-flex */
+  align-items: center; /* Wyrównanie ikony i tekstu w pionie */
   font-size: 14px;
   cursor: pointer;
-  border-radius: 25px; /* Zaokrąglone rogi */
-  transition: background-color 0.3s, transform 0.1s; /* Animacja tła i efekt kliknięcia */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Cień */
+  border-radius: 25px;
+  transition: background-color 0.3s, transform 0.1s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.test-result-entry button svg {
+  margin-right: 8px; /* Odstęp między ikoną a tekstem */
+  fill: white; /* Kolor ikony */
 }
 
 .test-result-entry button:hover {
-  background-color: #c0392b; /* Ciemniejszy czerwony po najechaniu */
+  background-color: #c0392b;
 }
 
 .test-result-entry button:active {
-  transform: scale(0.95); /* Efekt kliknięcia */
+  transform: scale(0.95);
 }
 
 /* Kontener dla przycisku */
