@@ -112,6 +112,7 @@
               id="modal-numberTaximeter"
               placeholder="Numer taksometru"
               class="input-spacing input-capitalize-letters"
+              oninput="validateNumberTaximeter()"
             />
             <input
               type="text"
@@ -124,30 +125,35 @@
               id="modal-registrationNumber"
               placeholder="Numer rejestracyjny"
               class="input-spacing input-capitalize-letters"
+              oninput="validateRegistrationNumber()"
             />
             <input
               type="text"
               id="modal-wheelsSize"
               placeholder="Rozmiar opon"
               class="input-spacing input-capitalize-letters"
+              oninput="validateWheelsSize()"
             />
             <input
               type="text"
               id="modal-const_k"
               placeholder=""
               class="input-spacing input-locked"
+              readonly
             />
             <input
               type="text"
               id="modal-factor_w"
               placeholder=""
               class="input-spacing input-locked"
+              readonly
             />
             <input
               type="text"
               id="modal-result"
               placeholder=""
               class="input-spacing input-locked"
+              readonly
             />
             <button id="btn-modal-save" onclick="saveModalData()">
               Zapisz pomiar

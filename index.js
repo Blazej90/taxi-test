@@ -214,6 +214,39 @@ document.addEventListener("DOMContentLoaded", function () {
   updateTestResultFromLocalStorage();
 });
 
+// Validacja dla numeru taksometru
+function validateNumberTaximeter() {
+  const input = document.getElementById("modal-numberTaximeter");
+  input.value = input.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+}
+
+// Validacja dla numeru rejestracyjnego
+function validateRegistrationNumber() {
+  const input = document.getElementById("modal-registrationNumber");
+  input.value = input.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+}
+
+// Validacja dla rozmiaru opon
+function validateWheelsSize() {
+  const input = document.getElementById("modal-wheelsSize");
+  input.value = input.value.toUpperCase();
+}
+
+// Na wczytaniu strony, ustawiamy styl dla inputów
+document.addEventListener("DOMContentLoaded", () => {
+  const makeOfCarInput = document.getElementById("modal-makeOfCar");
+  makeOfCarInput.addEventListener("input", () => {
+    if (makeOfCarInput.value.length === 1) {
+      makeOfCarInput.value = makeOfCarInput.value.toUpperCase();
+    }
+  });
+
+  const wheelsSizeInput = document.getElementById("modal-wheelsSize");
+  wheelsSizeInput.addEventListener("input", () => {
+    wheelsSizeInput.value = wheelsSizeInput.value.toUpperCase();
+  });
+});
+
 function updateTestResultFromLocalStorage() {
   if (window.location.pathname.includes("test_result.html")) {
     const testResults = JSON.parse(localStorage.getItem("testResults")) || [];
@@ -262,8 +295,8 @@ function updateTestResultFromLocalStorage() {
           entry.registrationNumber || "-"
         }</p>
         <p><strong>Rozmiar opon:</strong> ${entry.wheelsSize || "-"}</p>
-        <p><strong>Stała "k":</strong> ${entry.const_k || "-"}</p>
-        <p><strong>Współczynnik "w":</strong> ${entry.factor_w || "-"}</p>
+        <p><strong>Stała</strong> ${entry.const_k || "-"}</p>
+        <p><strong>Współczynnik:</strong> ${entry.factor_w || "-"}</p>
         <p><strong>Wynik:</strong> <span class="${resultColorClass}">${
         entry.result || "-"
       }</span></p>
